@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Yu Gothic", "YuGothic", "Hiragino Sans", "Meiryo", sans-serif;
+  --font-serif: "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fbfaf7;
+  color: #1e252c;
+  font-family: var(--font-sans);
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:lang(ja),
+body {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  word-break: auto-phrase;
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+
+@supports not (word-break: auto-phrase) {
+  :lang(ja),
+  body,
+  h1, h2, h3, h4, h5, h6 {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+}
+
+::selection {
+  background: #e7dcc0;
+  color: #17273f;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+a, button {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+:focus-visible {
+  outline: 2px solid #b79a5b;
+  outline-offset: 2px;
+}
+
+.article-body p {
+  margin-top: 1.25rem;
+  line-height: 2;
+  color: rgba(30, 37, 44, 0.76);
+}
+
+.article-body h2 {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #17273f;
+}
+
+.article-body h3 {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #17273f;
+}
+
+.article-body ul {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  color: rgba(30, 37, 44, 0.76);
+  line-height: 2;
+}
