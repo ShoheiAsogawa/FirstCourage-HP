@@ -6,7 +6,8 @@ export function Section({
   title,
   lead,
   children,
-  tone = "white"
+  tone = "white",
+  align = "left"
 }: {
   id?: string;
   eyebrow?: string;
@@ -14,15 +15,18 @@ export function Section({
   lead?: string;
   children: ReactNode;
   tone?: "white" | "fog" | "navy";
+  align?: "left" | "center";
 }) {
   const toneClass =
     tone === "fog" ? "bg-fog" : tone === "navy" ? "bg-navy text-white" : "bg-linen";
+
+  const headAlign = align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl";
 
   return (
     <section id={id} className={`${toneClass} py-14 sm:py-20`}>
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         {title ? (
-          <div className="mb-8 max-w-3xl">
+          <div className={`mb-8 ${headAlign}`}>
             {eyebrow ? (
               <p className="mb-3 text-sm font-bold tracking-[0.08em] text-gold">{eyebrow}</p>
             ) : null}

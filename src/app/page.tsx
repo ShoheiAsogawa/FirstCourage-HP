@@ -5,7 +5,6 @@ import { ButtonLink, LineButton, PhoneButton } from "@/components/ButtonLink";
 import { CtaBand } from "@/components/CtaBand";
 import { InfoCard } from "@/components/Cards";
 import { Section } from "@/components/Section";
-import { VisualFrame } from "@/components/VisualFrame";
 import {
   articles,
   brands,
@@ -24,20 +23,31 @@ import {
 export default function Home() {
   return (
     <>
-      <section className="bg-linen py-10 sm:py-16">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div>
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold-soft bg-white px-4 py-2 text-sm font-bold text-navy">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
-              </span>
-              全国対応・催事買取 / LINE無料査定
-            </p>
-            <h1 className="font-serif text-4xl font-bold leading-tight text-navy sm:text-6xl">
-              使っていないブランド品を、まずは写真で気軽に相談。
+      <section className="relative isolate -mt-[69px] min-h-[820px] overflow-hidden bg-linen pt-28 text-navy sm:min-h-[860px] lg:flex lg:items-center lg:pt-20">
+        <Image
+          src="/images/hero-mobile-new.png"
+          alt="ブランド品とスマートフォンで気軽に査定相談する様子"
+          fill
+          sizes="(max-width: 767px) 100vw, 0vw"
+          className="object-cover object-[center_top] md:hidden"
+          priority
+        />
+        <Image
+          src="/images/hero-desktop-new.png"
+          alt="ブランド品とスマートフォンで気軽に査定相談する様子"
+          fill
+          sizes="(min-width: 768px) 100vw, 0vw"
+          className="hidden object-cover object-center md:block"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/92 via-white/52 to-transparent md:bg-gradient-to-r md:from-linen md:via-linen/45 md:to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-linen to-transparent" />
+        <div className="relative mx-auto w-full max-w-7xl px-4 pb-14 pt-8 sm:px-6 lg:pb-20 lg:pt-14">
+          <div className="max-w-3xl">
+            <h1 className="font-serif text-4xl font-bold leading-tight text-navy sm:text-5xl lg:text-6xl">
+              眠っているブランド品、まずは写真で査定。
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-9 text-ink/74">
+            <p className="mt-6 max-w-2xl text-lg leading-9 text-ink/76">
               {company.name}は、ブランドバッグ・時計・ジュエリー・金貴金属の買取相談を承ります。
               催事会場へ行く前に、LINEで写真を送るだけ。査定だけでもご相談ください。
             </p>
@@ -45,9 +55,9 @@ export default function Home() {
               <LineButton label="LINEで写真を送るだけ査定" />
               <PhoneButton label="電話で相談" />
             </div>
-            <ul className="mt-6 grid gap-3 text-sm font-bold text-ink/75 sm:grid-cols-3">
+            <ul className="mt-8 grid gap-3 text-sm font-bold text-navy sm:grid-cols-3">
               {["査定料無料", "無理な営業なし", "会社情報・許認可を明示"].map((item) => (
-                <li key={item} className="flex items-center gap-2">
+                <li key={item} className="flex items-center gap-2 rounded-full border border-gold-soft/70 bg-white/75 px-4 py-3 backdrop-blur-sm">
                   <CheckCircle2 aria-hidden size={18} className="text-gold" />
                   {item}
                 </li>
@@ -56,17 +66,13 @@ export default function Home() {
             <div className="mt-7 h-px w-16 bg-gold-soft" />
             <p className="mt-3 text-xs text-ink/50">古物商許可番号を明示。催事買取でも安心の運営体制です。</p>
           </div>
-          <VisualFrame
-            variant="hero"
-            label="上品なブランド品とLINE査定の気軽さが同時に伝わる、初回相談向けのビジュアル。"
-          />
         </div>
       </section>
 
-      <section className="border-y border-ink/10 bg-white py-6">
+      <section className="relative -mt-20 border-y border-ink/10 bg-transparent pb-8">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 sm:grid-cols-3 sm:px-6">
           {metrics.map((metric) => (
-            <div key={metric.label} className="rounded-lg border border-gold-soft/60 bg-fog p-5">
+            <div key={metric.label} className="rounded-2xl border border-gold-soft/70 bg-white p-5 shadow-soft">
               <p className="text-sm font-bold text-ink/60">{metric.label}</p>
               <p className="mt-1 font-serif text-3xl font-bold">
                 <span className="text-gold">{metric.value}</span>
@@ -80,6 +86,7 @@ export default function Home() {
       </section>
 
       <Section
+        align="center"
         eyebrow="TRUST"
         title="催事買取でも、相談先が見える安心を。"
         lead="初めての方が不安に感じやすい「運営元がわからない」「強引に売らされそう」を、情報開示と相談設計で解消します。"
@@ -113,32 +120,49 @@ export default function Home() {
       </div>
 
       <Section
+        align="center"
         tone="fog"
-        eyebrow="METHOD"
         title="買取方法"
         lead="催事での対面相談を中心に、来場前のLINE査定と電話相談を組み合わせ、不安の少ない入口を用意します。"
       >
-        <div className="grid gap-4 md:grid-cols-3">
-          {purchaseMethods.map((method) => (
-            <InfoCard
-              key={method.title}
-              title={method.title}
-              body={`${method.lead} ${method.body}`}
-              icon={method.icon}
-              href={method.href}
+        <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
+          <div className="relative min-h-80 overflow-hidden rounded-3xl shadow-soft">
+            <Image
+              src="/images/line-assessment.png"
+              alt="スマートフォンでLINE査定の写真相談をするイメージ"
+              fill
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              className="object-cover"
             />
-          ))}
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/78 via-navy/18 to-transparent" />
+            <div className="absolute bottom-0 left-0 p-6 text-white">
+              <p className="text-sm font-bold tracking-[0.12em] text-gold">入口はゆるく、説明はまじめに。</p>
+              <p className="mt-3 font-serif text-2xl font-bold leading-snug">写真、電話、会場。得意な相談方法から始められます。</p>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1">
+            {purchaseMethods.map((method) => (
+              <InfoCard
+                key={method.title}
+                title={method.title}
+                body={`${method.lead} ${method.body}`}
+                icon={method.icon}
+                href={method.href}
+              />
+            ))}
+          </div>
         </div>
       </Section>
 
       <Section
+        align="center"
         eyebrow="ITEMS"
         title="買取品目"
         lead="ブランド品から貴金属、整理品までまとめて相談できます。状態に不安があるものもLINEで確認できます。"
       >
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {itemCategories.slice(0, 10).map((item) => (
-            <div key={item.name} className="rounded-lg border border-ink/10 bg-white p-4">
+            <div key={item.name} className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
               <item.icon aria-hidden className="mb-3 text-gold" size={23} />
               <h3 className="font-bold text-navy">{item.name}</h3>
               <p className="mt-2 text-sm leading-6 text-ink/65">{item.description}</p>
@@ -161,7 +185,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="mt-7">
+        <div className="mt-7 flex justify-center">
           <ButtonLink href="/items" variant="outline">
             買取品目を詳しく見る
           </ButtonLink>
@@ -169,6 +193,7 @@ export default function Home() {
       </Section>
 
       <Section
+        align="center"
         tone="fog"
         eyebrow="BRANDS"
         title="買取強化ブランド"
@@ -217,13 +242,14 @@ export default function Home() {
       </Section>
 
       <Section
+        align="center"
         eyebrow="FLOW"
         title="相談から買取までの流れ"
         lead="最初の接点はLINEでも電話でも構いません。納得できた場合のみ、次の手続きへ進みます。"
       >
         <div className="grid gap-4 md:grid-cols-4">
           {flowSteps.map((step, index) => (
-            <div key={step.title} className="rounded-lg border border-ink/10 bg-white p-5">
+            <div key={step.title} className="rounded-2xl border border-ink/10 bg-white p-5 shadow-sm">
               <p className="mb-4 font-serif text-3xl font-bold text-gold">0{index + 1}</p>
               <step.icon aria-hidden size={24} className="mb-3 text-navy" />
               <h3 className="font-bold text-navy">{step.title}</h3>
@@ -233,7 +259,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section tone="fog" eyebrow="PRICE" title="買取参考価格">
+      <Section align="center" tone="fog" eyebrow="PRICE" title="買取参考価格">
         <div className="grid gap-4 md:grid-cols-3">
           {priceReferences.slice(0, 3).map((item) => (
             <div key={item.item} className="rounded-lg border border-ink/10 bg-white p-5">
@@ -245,14 +271,14 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <div className="mt-7">
+        <div className="mt-7 flex justify-center">
           <ButtonLink href="/prices" variant="outline">
             参考価格をもっと見る
           </ButtonLink>
         </div>
       </Section>
 
-      <Section eyebrow="VOICE" title="お客様の声 / 買取実績">
+      <Section align="center" eyebrow="VOICE" title="お客様の声 / 買取実績">
         <div className="grid gap-4 md:grid-cols-3">
           {testimonials.map((voice) => (
             <figure key={voice.name} className="rounded-lg border border-ink/10 bg-white p-5">
@@ -276,7 +302,7 @@ export default function Home() {
 
       <CtaBand tone="dark" />
 
-      <Section tone="fog" eyebrow="COLUMN" title="お役立ち記事">
+      <Section align="center" tone="fog" eyebrow="COLUMN" title="お役立ち記事">
         <div className="grid gap-4 md:grid-cols-3">
           {articles.slice(0, 3).map((article) => (
             <Link key={article.slug} href={`/columns/${article.slug}`} className="flex flex-col min-h-[180px] rounded-lg border border-ink/10 bg-white p-6 transition hover:border-gold">
