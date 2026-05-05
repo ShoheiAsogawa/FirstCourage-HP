@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { CtaBand } from "@/components/CtaBand";
 import { InfoCard } from "@/components/Cards";
 import { PageHero } from "@/components/PageHero";
@@ -74,25 +73,6 @@ export default function CompanyPage() {
             <div key={title} className="rounded-lg border border-ink/10 bg-white p-5">
               <h3 className="font-bold text-navy">{title}</h3>
               <p className="mt-3 leading-7 text-ink/70">{body}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section title="スタッフ紹介">
-        <div className="grid gap-6 sm:grid-cols-2">
-          {[
-            { src: "/images/staff-female.jpg", alt: "女性査定スタッフ", role: "ブランドバッグ・ジュエリー担当", desc: "お客様の立場に寄り添い、査定内容をわかりやすくご説明します。" },
-            { src: "/images/staff-male.jpg", alt: "男性査定スタッフ", role: "時計・貴金属担当", desc: "年式・状態・相場を丁寧に確認し、納得いただける査定を心がけます。" }
-          ].map(({ src, alt, role, desc }) => (
-            <div key={role} className="overflow-hidden rounded-lg border border-ink/10 bg-white">
-              <div className="relative aspect-[4/5] w-full bg-fog">
-                <Image src={src} alt={alt} fill className="object-cover object-top" sizes="(min-width: 640px) 50vw, 100vw" />
-              </div>
-              <div className="p-6">
-                <p className="text-xs font-bold tracking-wide text-gold">{role}</p>
-                <p className="mt-3 leading-8 text-ink/72">{desc}</p>
-              </div>
             </div>
           ))}
         </div>

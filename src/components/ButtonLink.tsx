@@ -51,7 +51,7 @@ export function ButtonLink({
 }
 
 export function LineButton({
-  label = "LINEで無料査定",
+  label = "今すぐ査定",
   prominent = false,
   className
 }: {
@@ -62,10 +62,10 @@ export function LineButton({
 }) {
   return (
     <ButtonLink
-      href={company.lineUrl}
+      href="/assessment/start"
       variant="line"
       showArrow={!prominent}
-      showLeadingIcon={!prominent}
+      showLeadingIcon={false}
       className={
         prominent
           ? ["min-h-14 px-10 py-4 text-lg font-bold tracking-wide sm:text-xl", className].filter(Boolean).join(" ")

@@ -49,10 +49,10 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-9 text-ink/76">
               {company.name}は、ブランドバッグ・時計・ジュエリー・金貴金属の買取相談を承ります。
-              催事会場へ行く前に、LINEで写真を送るだけ。査定だけでもご相談ください。
+              催事会場へ行く前に、Webでかんたんに査定情報を入力。査定だけでもご相談ください。
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <LineButton label="LINEで写真を送るだけ査定" />
+              <LineButton label="今すぐ査定" />
               <PhoneButton label="電話で相談" />
             </div>
             <ul className="mt-8 grid gap-3 text-sm font-bold text-navy sm:grid-cols-3">
