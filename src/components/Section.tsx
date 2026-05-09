@@ -19,7 +19,7 @@ export function Section({
 }) {
   const toneClass =
     tone === "fog"
-      ? "bg-fog"
+      ? "bg-fog bg-dots"
       : tone === "navy"
         ? "bg-charcoal text-white"
         : "bg-white";
@@ -27,20 +27,17 @@ export function Section({
   const headAlign = align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl";
 
   return (
-    <section id={id} className={`${toneClass} relative py-14 sm:py-20`}>
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+    <section id={id} className={`${toneClass} relative py-16 sm:py-24`}>
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-6">
         {title ? (
-          <div className={`mb-8 ${headAlign}`}>
+          <div className={`mb-10 ${headAlign}`}>
             {eyebrow ? (
               <p
-                className={`mb-3 inline-flex items-center gap-2 text-sm font-bold tracking-[0.08em] ${
-                  tone === "navy" ? "text-white/86" : "text-crimson"
+                className={`mb-4 inline-flex items-center gap-3 text-xs font-bold tracking-[0.15em] ${
+                  tone === "navy" ? "text-white/70" : "text-crimson"
                 }`}
               >
-                <span
-                  className={`h-px w-7 ${tone === "navy" ? "bg-white/50" : "bg-gold"}`}
-                  aria-hidden
-                />
+                <span className={`h-px w-8 ${tone === "navy" ? "bg-white/30" : "bg-crimson/40"}`} aria-hidden />
                 {eyebrow}
               </p>
             ) : null}
@@ -48,10 +45,11 @@ export function Section({
               {title}
             </h2>
             {lead ? (
-              <p className={`mt-4 leading-8 ${tone === "navy" ? "text-white/82" : "text-ink/72"}`}>
+              <p className={`mt-5 leading-8 ${tone === "navy" ? "text-white/72" : "text-charcoal/62"}`}>
                 {lead}
               </p>
             ) : null}
+            <div className={`mt-6 h-[3px] w-10 rounded-full ${tone === "navy" ? "bg-white/20" : "bg-gradient-to-r from-crimson to-crimson-glow"}`} />
           </div>
         ) : null}
         {children}

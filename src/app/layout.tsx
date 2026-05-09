@@ -31,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
         <Header />
-        <main className="pt-[69px]">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
