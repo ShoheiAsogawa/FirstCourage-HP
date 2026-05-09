@@ -1,4 +1,4 @@
-import { CheckCircle2 } from "lucide-react";
+import { CircleCheck as CheckCircle2 } from "lucide-react";
 import { LineButton, PhoneButton } from "@/components/ButtonLink";
 import { company } from "@/data/site";
 
@@ -14,15 +14,25 @@ export function CtaBand({
   const dark = tone === "dark";
 
   return (
-    <section className={dark ? "bg-navy py-12 text-white" : "bg-white py-12 text-ink"}>
-      <div className="mx-auto grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center">
+    <section
+      className={`relative overflow-hidden py-16 sm:py-20 ${
+        dark ? "bg-navy text-white" : "bg-white text-ink"
+      }`}
+    >
+      {dark ? (
+        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-2 to-navy opacity-90" />
+      ) : null}
+      {dark ? (
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle at 30% 40%, #b79a5b 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+      ) : null}
+      <div className={`relative mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-center ${dark ? "" : "bg-gradient-to-r from-gold-light/40 via-white to-gold-light/40 rounded-2xl p-8 sm:p-10"}`}>
         <div>
-          <p className="mb-2 text-sm font-bold tracking-[0.08em] text-gold">無料相談</p>
+          <p className="mb-2 text-sm font-bold tracking-[0.12em] text-gold">無料相談</p>
           <h2 className="font-serif text-2xl font-bold leading-tight sm:text-3xl">{title}</h2>
-          <p className={`mt-4 max-w-2xl leading-8 ${dark ? "text-white/78" : "text-ink/72"}`}>
+          <p className={`mt-4 max-w-2xl leading-8 ${dark ? "text-white/78" : "text-ink/68"}`}>
             {lead}
           </p>
-          <ul className="mt-4 grid gap-2 text-sm font-bold sm:grid-cols-3">
+          <ul className="mt-5 grid gap-2 text-sm font-bold sm:grid-cols-3">
             {["査定料無料", "しつこい営業なし", "電話相談も受付"].map((item) => (
               <li key={item} className="flex items-center gap-2">
                 <CheckCircle2 aria-hidden size={17} className="text-gold" />
