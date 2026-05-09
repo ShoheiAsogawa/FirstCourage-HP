@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { CtaBand } from "@/components/CtaBand";
-import { InfoCard } from "@/components/Cards";
+import { DecorativeIcon, InfoCard } from "@/components/Cards";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { flowSteps, trustPoints } from "@/data/site";
@@ -53,11 +53,13 @@ export default function FirstTimePage() {
       <Section tone="fog" title="初めての方におすすめの進め方">
         <div className="grid gap-4 md:grid-cols-4">
           {flowSteps.map((step, index) => (
-            <div key={step.title} className="rounded-lg border border-ink/10 bg-white p-5">
-              <p className="font-serif text-3xl font-bold text-gold">0{index + 1}</p>
-              <step.icon aria-hidden className="mt-4 text-navy" size={24} />
-              <h2 className="mt-3 font-bold text-navy">{step.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-ink/68">{step.body}</p>
+            <div key={step.title} className="relative overflow-hidden rounded-lg border border-ink/10 bg-white p-5 transition hover:border-gold">
+              <DecorativeIcon icon={step.icon} />
+              <div className="relative z-10">
+                <p className="font-serif text-3xl font-bold text-gold">0{index + 1}</p>
+                <h2 className="mt-3 font-bold text-navy">{step.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-ink/68">{step.body}</p>
+              </div>
             </div>
           ))}
         </div>

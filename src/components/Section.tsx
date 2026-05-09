@@ -19,30 +19,39 @@ export function Section({
 }) {
   const toneClass =
     tone === "fog"
-      ? "bg-fog bg-pattern"
+      ? "bg-fog"
       : tone === "navy"
-        ? "bg-navy text-white"
-        : "bg-linen";
+        ? "bg-charcoal text-white"
+        : "bg-white";
 
   const headAlign = align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl";
 
   return (
-    <section id={id} className={`${toneClass} py-16 sm:py-24`}>
+    <section id={id} className={`${toneClass} relative py-14 sm:py-20`}>
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         {title ? (
-          <div className={`mb-10 ${headAlign}`}>
+          <div className={`mb-8 ${headAlign}`}>
             {eyebrow ? (
-              <p className="mb-3 text-sm font-bold tracking-[0.12em] text-gold">{eyebrow}</p>
+              <p
+                className={`mb-3 inline-flex items-center gap-2 text-sm font-bold tracking-[0.08em] ${
+                  tone === "navy" ? "text-white/86" : "text-crimson"
+                }`}
+              >
+                <span
+                  className={`h-px w-7 ${tone === "navy" ? "bg-white/50" : "bg-gold"}`}
+                  aria-hidden
+                />
+                {eyebrow}
+              </p>
             ) : null}
             <h2 className="font-serif text-2xl font-bold leading-tight text-inherit sm:text-4xl">
               {title}
             </h2>
             {lead ? (
-              <p className={`mt-4 leading-8 ${tone === "navy" ? "text-white/78" : "text-ink/68"}`}>
+              <p className={`mt-4 leading-8 ${tone === "navy" ? "text-white/82" : "text-ink/72"}`}>
                 {lead}
               </p>
             ) : null}
-            <div className="mt-6 h-[2px] w-12 rounded-full bg-gold/60" />
           </div>
         ) : null}
         {children}

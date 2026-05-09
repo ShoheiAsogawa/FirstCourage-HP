@@ -1,4 +1,4 @@
-import {
+﻿import {
   Award,
   BadgeCheck,
   BriefcaseBusiness,
@@ -22,22 +22,19 @@ export const company = {
   nameEn: "FirstCourage Inc.",
   area: "全国対応",
   business: "ブランド品・時計・ジュエリー・貴金属の催事買取、LINE無料査定、買取相談",
-  license: "古物商許可番号：第000000000000号（開発用プレースホルダー）",
-  address: "東京都〇〇区〇〇 0-0-0（開発用プレースホルダー）",
-  representative: "代表取締役：山田 太郎（開発用プレースホルダー）",
+  license: "古物商許可番号：第000000000000号",
+  address: "東京都〇〇区〇〇 0-0-0",
+  representative: "代表取締役：山田 太郎",
   phone: "0120-000-000",
-  phoneHours: "10:00-18:00 / 土日祝も相談受付（開発用）",
+  phoneHours: "10:00-18:00 / 土日祝も相談受付",
   lineUrl: "https://line.me/R/ti/p/@firstcourage-placeholder",
   contactEmail: "info@example.com",
   noStoreNote: "実店舗を持たず、全国各地の催事会場とLINE査定でご相談を承ります。"
 } as const;
 
-export const placeholderNotice =
-  "この数値・口コミ・電話番号・所在地・許可番号は開発用プレースホルダーです。公開前に必ず本番値へ差し替えてください。";
-
 export const metrics = [
-  { label: "催事開催実績", value: "120", unit: "会場以上", note: "開発用プレースホルダー" },
-  { label: "買取相談件数", value: "3,500", unit: "件以上", note: "開発用プレースホルダー" },
+  { label: "催事開催実績", value: "120", unit: "会場以上", note: "" },
+  { label: "買取相談件数", value: "3,500", unit: "件以上", note: "" },
   { label: "査定料", value: "0", unit: "円", note: "LINE・電話相談も無料" }
 ] as const;
 
@@ -45,7 +42,6 @@ export const navItems = [
   { label: "初めての方へ", href: "/first-time" },
   { label: "買取方法", href: "/purchase-methods" },
   { label: "買取品目", href: "/items" },
-  { label: "強化ブランド", href: "/brands" },
   { label: "参考価格", href: "/prices" },
   { label: "FAQ", href: "/faq" },
   { label: "会社概要", href: "/company" }
@@ -194,26 +190,26 @@ export const flowSteps = [
 ] as const;
 
 export const eventHistory = [
-  "関東エリア 商業施設催事（開発用プレースホルダー）",
-  "中部エリア 期間限定相談会（開発用プレースホルダー）",
-  "関西エリア ブランド品無料査定会（開発用プレースホルダー）"
+  "関東エリア 商業施設催事",
+  "中部エリア 期間限定相談会",
+  "関西エリア ブランド品無料査定会"
 ] as const;
 
 export const testimonials = [
   {
     name: "50代 女性",
     body: "初めてで不安でしたが、LINEで先に相談できたので会場へ行きやすかったです。",
-    note: "開発用プレースホルダー"
+    note: ""
   },
   {
     name: "60代 男性",
     body: "時計と貴金属をまとめて相談しました。説明が丁寧で、無理に決めなくてよい雰囲気でした。",
-    note: "開発用プレースホルダー"
+    note: ""
   },
   {
     name: "40代 女性",
     body: "古いバッグでも写真だけで確認してもらえたので、まず聞いてみてよかったです。",
-    note: "開発用プレースホルダー"
+    note: ""
   }
 ] as const;
 
@@ -244,92 +240,7 @@ export const faqs = [
   }
 ] as const;
 
-export const articles = [
-  {
-    slug: "louis-vuitton-selling-points",
-    title: "ルイ・ヴィトン買取で高く売るポイント",
-    category: "ブランド買取",
-    description: "型番、状態、付属品、相場変動など、査定前に確認したい基本を解説します。",
-    keywords: ["ルイ・ヴィトン 買取", "ブランドバッグ 査定", "高く売る"],
-    body: [
-      "ルイ・ヴィトンは流通量が多く、モデル名・素材・状態で査定の見方が変わります。まずはバッグ全体、刻印、角スレ、内側の状態がわかる写真を用意しましょう。",
-      "保存袋や箱がなくても相談できますが、購入時の付属品が残っている場合は一緒に確認すると査定がスムーズです。",
-      "催事に持ち込む前にLINEで写真を送ると、売却前の不安を減らせます。"
-    ]
-  },
-  {
-    slug: "chanel-bag-assessment",
-    title: "シャネルバッグの査定で見られるポイント",
-    category: "バッグ買取",
-    description: "マトラッセなどの査定で確認されやすい箇所と、写真の撮り方をまとめました。",
-    keywords: ["シャネル バッグ 買取", "マトラッセ 査定"],
-    body: [
-      "シャネルバッグはモデル、素材、チェーンや金具の状態、内側のベタつき、付属品の有無が確認されます。",
-      "写真査定では、正面・背面・底面・内側・金具・傷のアップを送ると状態が伝わりやすくなります。",
-      "年代が古いバッグも相談可能です。状態に不安がある場合も、まずはLINEで確認しましょう。"
-    ]
-  },
-  {
-    slug: "rolex-assessment-standard",
-    title: "ロレックス買取の査定基準",
-    category: "時計買取",
-    description: "モデル、年式、稼働状態、付属品など、時計査定の基本をやさしく解説します。",
-    keywords: ["ロレックス 買取", "時計 査定"],
-    body: [
-      "ロレックスはモデル、年式、文字盤、ブレスレットの状態、稼働状況、保証書や箱の有無が確認されます。",
-      "動いていない場合でも相談できるケースがあります。無理に修理へ出す前に、現状のまま写真で相談する方法もあります。",
-      "催事会場へ持参する際は、余りコマや保証書があれば一緒に持っていくと確認がスムーズです。"
-    ]
-  },
-  {
-    slug: "old-brand-bag",
-    title: "古いブランドバッグは売れる？",
-    category: "初めての売却",
-    description: "古いモデル、傷あり、付属品なしでも相談できる理由と注意点を説明します。",
-    keywords: ["古い ブランドバッグ 売れる", "付属品なし 買取"],
-    body: [
-      "古いブランドバッグでも、ブランドやモデルによって需要があります。角スレ、型崩れ、内側の汚れがあっても、まずは相談できます。",
-      "査定前に過度なクリーニングを行う必要はありません。状態がわかる写真を複数枚送ることが大切です。",
-      "売れるか不安な品物は、LINE査定で事前に確認してから催事会場へ持ち込むと安心です。"
-    ]
-  },
-  {
-    slug: "event-buying-guide",
-    title: "催事買取とは？メリット・注意点",
-    category: "買取方法",
-    description: "催事買取の仕組み、安心して利用するための確認ポイントを整理します。",
-    keywords: ["催事買取 とは", "ブランド品 催事買取"],
-    body: [
-      "催事買取は、商業施設や地域会場などで期間限定の査定相談を受けられる方法です。店舗まで行く手間を減らせる一方、運営会社の確認が大切です。",
-      "会社名、所在地、古物商許可番号、連絡先が明示されているかを確認しましょう。説明に納得できない場合は見送って問題ありません。",
-      "FirstCourageでは、催事前にLINEや電話で相談できる導線を用意しています。"
-    ]
-  },
-  {
-    slug: "first-brand-selling",
-    title: "初めてブランド品を売る人が知っておきたいこと",
-    category: "初めての売却",
-    description: "本人確認、査定の流れ、断ってもよいことなど、不安を減らす基本情報です。",
-    keywords: ["ブランド品 初めて 売る", "買取 流れ"],
-    body: [
-      "初めての買取では、本人確認書類、査定の説明、金額に納得した場合の手続きが基本です。",
-      "査定後に必ず売らなければならないわけではありません。迷った場合は一度持ち帰る、家族に相談するなどの選択もできます。",
-      "不安な方は、まずLINEで写真を送り、相談の雰囲気を確認することをおすすめします。"
-    ]
-  },
-  {
-    slug: "line-assessment-flow",
-    title: "LINE査定の流れと注意点",
-    category: "LINE査定",
-    description: "写真を送るだけ査定の手順と、正確に伝えるための撮影ポイントを紹介します。",
-    keywords: ["LINE査定", "写真を送るだけ 査定"],
-    body: [
-      "LINE査定は、品物の写真を送って事前に相談できる方法です。来場前に売れるかどうかを確認したい方に向いています。",
-      "写真は明るい場所で、全体・ロゴ・型番・傷や汚れのアップを撮影してください。時計やジュエリーは付属品も一緒に撮ると確認しやすくなります。",
-      "写真だけでは確定金額を出せない場合もありますが、次に何を確認すればよいかを案内できます。"
-    ]
-  }
-] as const;
+export const articles = [] as const;
 
 export const imagePrompts = [
   {
@@ -363,3 +274,4 @@ export const imagePrompts = [
       "Use case: photorealistic-natural. Asset type: trust and company information image. Scene/backdrop: clean office desk with neatly placed documents, certificate folder, pen, business card with unreadable placeholder text. Subject: hands placing a document beside a small jewelry box. Style/medium: realistic business editorial photography. Composition/framing: landscape 4:3, calm and uncluttered. Lighting/mood: transparent, sincere, professional. Color palette: white, dark gray, navy, muted gold. Constraints: no readable legal numbers, no brand logo, no faces, no watermark."
   }
 ] as const;
+

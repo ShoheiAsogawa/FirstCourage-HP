@@ -7,13 +7,13 @@ import { company } from "@/data/site";
 type Variant = "line" | "phone" | "outline" | "dark";
 
 const base =
-  "inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-bold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 sm:text-base";
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold tracking-wider transition focus:outline-none focus:ring-2 focus:ring-crimson/30 focus:ring-offset-2 sm:text-base btn-luxury";
 
 const variants: Record<Variant, string> = {
-  line: "border border-[#06c755]/35 bg-[#e9fff1] text-[#075e2b] shadow-sm hover:border-[#06c755]/70 hover:bg-[#d7f8e3] hover:shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0",
-  phone: "bg-navy text-white shadow-sm hover:bg-navy-2 hover:shadow-navy-glow hover:-translate-y-0.5 active:translate-y-0",
-  outline: "border border-navy/15 bg-white text-navy shadow-sm hover:border-gold hover:bg-gold-light hover:shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0",
-  dark: "bg-ink text-white shadow-sm hover:bg-navy hover:shadow-navy-glow hover:-translate-y-0.5 active:translate-y-0"
+  line: "border border-[#06c755]/40 bg-[#f0fff4] text-[#065f46] shadow-lg hover:border-[#06c755]/70 hover:bg-[#dcfce7]",
+  phone: "bg-crimson text-white hover:bg-crimson-dark shadow-lg",
+  outline: "border-2 border-charcoal/15 bg-white text-charcoal hover:border-crimson hover:text-crimson",
+  dark: "bg-charcoal text-white hover:bg-black"
 };
 
 export function ButtonLink({
@@ -45,31 +45,30 @@ export function ButtonLink({
       ) : null}
       {variant === "phone" && showLeadingIcon ? <Phone aria-hidden size={18} /> : null}
       <span>{children}</span>
-      {showArrow ? (
-        <ArrowRight aria-hidden size={17} className="transition-transform duration-200 group-hover:translate-x-0.5" />
-      ) : null}
+      {showArrow ? <ArrowRight aria-hidden size={17} /> : null}
     </Link>
   );
 }
 
 export function LineButton({
-  label = "今すぐ査定",
+  label = "LINEで写真を送るだけ査定",
   prominent = false,
   className
 }: {
   label?: string;
+  /** アイコン・矢印を消し、文字を強調（トップなど） */
   prominent?: boolean;
   className?: string;
 }) {
   return (
     <ButtonLink
-      href="/assessment/start"
+      href={company.lineUrl}
       variant="line"
       showArrow={!prominent}
       showLeadingIcon={false}
       className={
         prominent
-          ? ["min-h-14 px-10 py-4 text-lg font-bold tracking-wide shadow-gold-glow sm:text-xl", className].filter(Boolean).join(" ")
+          ? ["min-h-14 px-8 py-4 text-base font-bold tracking-wide sm:px-10 sm:text-xl", className].filter(Boolean).join(" ")
           : className
       }
     >
@@ -95,7 +94,7 @@ export function PhoneButton({
       showLeadingIcon={!prominent}
       className={
         prominent
-          ? ["min-h-14 px-10 py-4 text-lg font-bold tracking-wide shadow-navy-glow sm:text-xl", className].filter(Boolean).join(" ")
+          ? ["min-h-14 px-8 py-4 text-base font-bold tracking-wide sm:px-10 sm:text-xl", className].filter(Boolean).join(" ")
           : className
       }
     >

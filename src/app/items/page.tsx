@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { CtaBand } from "@/components/CtaBand";
-import { InfoCard, PillList } from "@/components/Cards";
+import { DecorativeIcon } from "@/components/Cards";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
-import { brands, itemCategories } from "@/data/site";
+import { itemCategories } from "@/data/site";
 import { createMetadata } from "@/lib/seo";
 
 const featuredItems = [
@@ -32,14 +32,20 @@ export default function ItemsPage() {
       />
 
       <Section title="買取品目一覧">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-4">
           {itemCategories.map((category) => (
-            <InfoCard
+            <div
               key={category.name}
-              title={category.name}
-              body={category.description}
-              icon={category.icon}
-            />
+              className="relative overflow-hidden rounded-xl border border-ink/10 bg-white p-3 shadow-sm transition hover:border-gold sm:p-5"
+            >
+              <DecorativeIcon icon={category.icon} size={150} />
+              <div className="relative z-10 min-h-32 sm:min-h-28">
+                <h2 className="text-sm font-bold leading-snug text-navy sm:text-lg">{category.name}</h2>
+                <p className="mt-2 text-xs leading-5 text-ink/70 sm:text-base sm:leading-7">
+                  {category.description}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </Section>
@@ -50,9 +56,8 @@ export default function ItemsPage() {
         lead="遺品整理や生前整理など、点数が多い場合もお気軽にご相談ください。一点ずつお持ち込みいただく必要はありません。"
       >
         <p className="mb-6 max-w-3xl leading-8 text-ink/72">
-          ご自宅の整理や相続品の中にブランド品が複数あっても、まとめてLINEや電話でご相談いただけます。ブランド名がわからない品物も、写真を送っていただければ確認のポイントをご案内します。以下のブランドを中心に、掲載のないブランドも対応しています。
+          ご自宅の整理や相続品の中にブランド品が複数あっても、まとめてLINEや電話でご相談いただけます。ブランド名がわからない品物も、写真を送っていただければ確認のポイントをご案内します。
         </p>
-        <PillList items={brands} />
       </Section>
 
       <Section
@@ -60,7 +65,7 @@ export default function ItemsPage() {
         eyebrow="EXAMPLES"
         lead="バッグ・時計・ジュエリー・貴金属・アパレル・小物まで。下記は買取例の一部です。"
       >
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
           {featuredItems.map((item) => (
             <div key={item.title} className="overflow-hidden rounded-lg border border-ink/10 bg-white shadow-soft">
               <div className="relative aspect-[4/3] w-full">
@@ -72,10 +77,10 @@ export default function ItemsPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="p-5">
-                <p className="text-xs font-bold tracking-wide text-gold">{item.category}</p>
-                <h3 className="mt-2 font-bold text-navy">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-ink/65">{item.note}</p>
+              <div className="p-3 sm:p-5">
+                <p className="text-[11px] font-bold tracking-wide text-gold sm:text-xs">{item.category}</p>
+                <h3 className="mt-1 text-sm font-bold leading-snug text-navy sm:mt-2 sm:text-base">{item.title}</h3>
+                <p className="mt-1 text-xs leading-5 text-ink/65 sm:mt-2 sm:text-sm sm:leading-6">{item.note}</p>
               </div>
             </div>
           ))}

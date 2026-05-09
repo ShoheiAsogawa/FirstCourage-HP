@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { Check, ChevronRight } from "lucide-react";
 import { company } from "@/data/site";
@@ -70,7 +70,7 @@ export default function AssessmentOnboardingPage() {
     email: ""
   });
   const [photos, setPhotos] = useState<File[]>([]);
-  const [assessmentId, setAssessmentId] = useState("");
+  const [assessmentId] = useState(createAssessmentId);
   const [deliveryMethod, setDeliveryMethod] = useState<"line" | "email" | "">("");
   const [emailSubmitted, setEmailSubmitted] = useState(false);
 
@@ -91,10 +91,7 @@ export default function AssessmentOnboardingPage() {
   const gotoStep = (nextStep: number) => setStep(nextStep);
 
   const ensureAssessmentId = () => {
-    if (assessmentId) return assessmentId;
-    const id = createAssessmentId();
-    setAssessmentId(id);
-    return id;
+    return assessmentId;
   };
 
   const selectAndNext = (field: keyof FormState, value: string) => {
@@ -116,12 +113,6 @@ export default function AssessmentOnboardingPage() {
     setEmailSubmitted(true);
     gotoStep(finalStep);
   };
-
-  useEffect(() => {
-    if (step >= 10 && !assessmentId) {
-      ensureAssessmentId();
-    }
-  }, [step, assessmentId]);
 
   const updatePhotoAt = (index: number, file: File | null) => {
     setPhotos((prev) => {

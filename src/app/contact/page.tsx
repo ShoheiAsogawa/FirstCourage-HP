@@ -1,4 +1,6 @@
+import { FileText, MessageCircle, Phone } from "lucide-react";
 import { CtaBand } from "@/components/CtaBand";
+import { DecorativeIcon } from "@/components/Cards";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { ButtonLink, LineButton, PhoneButton } from "@/components/ButtonLink";
@@ -25,41 +27,50 @@ export default function ContactPage() {
       <Section eyebrow="HOW TO" title="3つの相談方法">
         <div className="grid gap-6 md:grid-cols-3">
           {/* LINE査定 */}
-          <div className="rounded-lg border border-ink/10 bg-white p-6 shadow-soft">
-            <p className="mb-2 text-xs font-bold tracking-[0.08em] text-gold">01</p>
-            <h2 className="font-serif text-xl font-bold text-navy">LINE査定</h2>
-            <p className="mt-3 leading-8 text-ink/72">
-              品物の写真をLINEで送るだけで、売れるかどうかや目安金額を事前に確認できます。来場前に相談できるため、初めての方にも安心です。
-            </p>
-            <div className="mt-6">
-              <LineButton />
+          <div className="relative overflow-hidden rounded-lg border border-ink/10 bg-white p-6 shadow-soft transition hover:border-gold">
+            <DecorativeIcon icon={MessageCircle} size={230} />
+            <div className="relative z-10">
+              <p className="mb-2 text-xs font-bold tracking-[0.08em] text-gold">01</p>
+              <h2 className="font-serif text-xl font-bold text-navy">LINE査定</h2>
+              <p className="mt-3 leading-8 text-ink/72">
+                品物の写真をLINEで送るだけで、売れるかどうかや目安金額を事前に確認できます。来場前に相談できるため、初めての方にも安心です。
+              </p>
+              <div className="mt-6">
+                <LineButton />
+              </div>
             </div>
           </div>
 
           {/* お電話 */}
-          <div className="rounded-lg border border-ink/10 bg-white p-6 shadow-soft">
-            <p className="mb-2 text-xs font-bold tracking-[0.08em] text-gold">02</p>
-            <h2 className="font-serif text-xl font-bold text-navy">お電話</h2>
-            <p className="mt-3 leading-8 text-ink/72">
-              写真の送付が難しい方や、まず話してから相談したい方はお電話ください。品物の種類・点数・催事会場の案内などをスタッフが対応します。
-            </p>
-            <p className="mt-4 font-serif text-2xl font-bold text-navy">{company.phone}</p>
-            <p className="mt-1 text-xs text-ink/50">{company.phoneHours}</p>
-            <div className="mt-5">
-              <PhoneButton />
+          <div className="relative overflow-hidden rounded-lg border border-ink/10 bg-white p-6 shadow-soft transition hover:border-gold">
+            <DecorativeIcon icon={Phone} size={230} />
+            <div className="relative z-10">
+              <p className="mb-2 text-xs font-bold tracking-[0.08em] text-gold">02</p>
+              <h2 className="font-serif text-xl font-bold text-navy">お電話</h2>
+              <p className="mt-3 leading-8 text-ink/72">
+                写真の送付が難しい方や、まず話してから相談したい方はお電話ください。品物の種類・点数・催事会場の案内などをスタッフが対応します。
+              </p>
+              <p className="mt-4 font-serif text-2xl font-bold text-navy">{company.phone}</p>
+              <p className="mt-1 text-xs text-ink/50">{company.phoneHours}</p>
+              <div className="mt-5">
+                <PhoneButton />
+              </div>
             </div>
           </div>
 
           {/* お問い合わせフォーム */}
-          <div className="rounded-lg border border-ink/10 bg-white p-6 shadow-soft">
-            <p className="mb-2 text-xs font-bold tracking-[0.08em] text-gold">03</p>
-            <h2 className="font-serif text-xl font-bold text-navy">お問い合わせフォーム</h2>
-            <p className="mt-3 leading-8 text-ink/72">
-              テキストで詳細をお伝えしたい方向けに、フォームを準備中です。現在はLINEまたはお電話にてご相談ください。
-            </p>
-            <p className="mt-6 inline-block rounded-md border border-ink/15 bg-fog px-4 py-2 text-sm text-ink/50">
-              準備中
-            </p>
+          <div className="relative overflow-hidden rounded-lg border border-ink/10 bg-white p-6 shadow-soft transition hover:border-gold">
+            <DecorativeIcon icon={FileText} size={230} />
+            <div className="relative z-10">
+              <p className="mb-2 text-xs font-bold tracking-[0.08em] text-gold">03</p>
+              <h2 className="font-serif text-xl font-bold text-navy">お問い合わせフォーム</h2>
+              <p className="mt-3 leading-8 text-ink/72">
+                テキストで詳細をお伝えしたい方向けに、フォームを準備中です。現在はLINEまたはお電話にてご相談ください。
+              </p>
+              <p className="mt-6 inline-block rounded-md border border-ink/15 bg-fog px-4 py-2 text-sm text-ink/50">
+                準備中
+              </p>
+            </div>
           </div>
         </div>
       </Section>
@@ -84,11 +95,13 @@ export default function ContactPage() {
       >
         <div className="grid gap-4 md:grid-cols-4">
           {flowSteps.map((step, index) => (
-            <div key={step.title} className="rounded-lg border border-ink/10 bg-white p-5">
-              <p className="mb-4 font-serif text-3xl font-bold text-gold">0{index + 1}</p>
-              <step.icon aria-hidden size={24} className="mb-3 text-navy" />
-              <h3 className="font-bold text-navy">{step.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-ink/68">{step.body}</p>
+            <div key={step.title} className="relative overflow-hidden rounded-lg border border-ink/10 bg-white p-5 transition hover:border-gold">
+              <DecorativeIcon icon={step.icon} />
+              <div className="relative z-10">
+                <p className="mb-4 font-serif text-3xl font-bold text-gold">0{index + 1}</p>
+                <h3 className="font-bold text-navy">{step.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-ink/68">{step.body}</p>
+              </div>
             </div>
           ))}
         </div>
