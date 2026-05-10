@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { DecorativeIcon } from "@/components/Cards";
-import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { VisualFrame } from "@/components/VisualFrame";
@@ -10,7 +9,7 @@ import { createMetadata } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "買取方法",
   description:
-    "催事買取、LINE査定、電話相談の流れを説明。FirstCourageは全国の催事会場と写真を送るだけ査定に対応しています。",
+    "催事買取、LINE査定、電話相談の流れを説明。買い取りバンクは全国の催事会場と写真を送るだけ査定に対応しています。",
   path: "/purchase-methods"
 });
 
@@ -55,7 +54,7 @@ export default function PurchaseMethodsPage() {
       ))}
       <div className="relative h-72 overflow-hidden sm:h-96">
         <Image
-          src="/images/appraisal-event.jpg"
+          src="/images/event-venue-wide.jpg"
           alt="催事査定の様子"
           fill
           sizes="100vw"
@@ -74,7 +73,6 @@ export default function PurchaseMethodsPage() {
           </div>
         </div>
       </div>
-      <CtaBand tone="dark" />
     </>
   );
 }

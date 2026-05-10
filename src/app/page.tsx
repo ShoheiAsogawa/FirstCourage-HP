@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { CheckCircle2, Quote } from "lucide-react";
-import { ButtonLink, LineButton, PhoneButton } from "@/components/ButtonLink";
-import { CtaBand } from "@/components/CtaBand";
+import { Quote } from "lucide-react";
+import { ButtonLink } from "@/components/ButtonLink";
 import { DecorativeIcon, InfoCard } from "@/components/Cards";
 import { Section } from "@/components/Section";
 import {
+  company,
   eventHistory,
   flowSteps,
   itemCategories,
@@ -18,69 +18,62 @@ import {
 export default function Home() {
   return (
     <>
-      {/* Luxurious Red & White Hero */}
-      <section className="relative isolate min-h-[620px] overflow-hidden bg-white pt-7 text-charcoal sm:min-h-[820px] sm:pt-14 lg:flex lg:items-center lg:pt-16">
+      {/* Hero: 画像を活かしつつ、見出しはモバイルは画面中央寄せ・デスクトップは左ブロック */}
+      <section className="relative isolate flex min-h-[100dvh] items-center justify-center overflow-hidden bg-white text-charcoal sm:min-h-[820px] md:justify-start">
         <Image
-          src="/images/hero-mobile-new.png"
-          alt="ブランド品とスマートフォンで気軽に査定相談する様子"
+          src="/images/hero-desktop.png"
+          alt="ブランド品の状態とご希望を伺いながら、丁寧に査定をご説明する様子"
           fill
-          sizes="(max-width: 767px) 100vw, 0vw"
-          className="object-cover object-[54%_top] md:hidden"
+          sizes="100vw"
+          className="object-cover object-[68%_center] md:object-[50%_center]"
           priority
         />
-        <Image
-          src="/images/hero-desktop-new.png"
-          alt="ブランド品とスマートフォンで気軽に査定相談する様子"
-          fill
-          sizes="(min-width: 768px) 100vw, 0vw"
-          className="hidden object-cover object-center md:block"
-          priority
-        />
-        {/* Rich red-tinted elegant overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/98 via-white/92 to-white/85 md:bg-gradient-to-r md:from-white/97 md:via-white/90 md:to-white/70" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white to-transparent" />
-        
-        <div className="relative mx-auto w-full max-w-7xl px-4 pb-12 pt-2 sm:px-6 sm:pb-14 sm:pt-8 lg:pb-20 lg:pt-14">
-          <div className="max-w-[340px] sm:max-w-3xl">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-red/20 bg-red/5 px-4 py-1 text-xs font-bold tracking-[3px] text-crimson">
-              EST. 2018 — 全国催事対応
-            </div>
-            <h1 className="font-serif text-[1.95rem] font-bold leading-[1.1] tracking-[-0.02em] text-charcoal sm:text-6xl lg:text-7xl">
-              大切なブランド品に、<span className="text-crimson">本物の価値</span>を。
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/15 to-black/35 md:bg-gradient-to-r md:from-black/35 md:via-black/20 md:to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/90 to-transparent md:h-32" />
+
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-4 pb-8 pt-[clamp(4.5rem,18vh,7rem)] text-center md:items-start md:justify-center md:px-6 md:pb-16 md:pt-14 md:text-left lg:px-8 lg:pb-20">
+          <div className="max-w-[min(100%,22rem)] sm:max-w-xl md:max-w-3xl">
+            <h1 className="hero-title-display font-serif text-[2.15rem] font-bold leading-[1.18] text-white [text-shadow:0_2px_28px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl lg:text-7xl flex flex-col items-center gap-8 text-center sm:gap-10 md:items-start md:gap-3.5 md:text-left lg:gap-3.5">
+              <span className="max-md:text-balance">大切なブランド品に、</span>
+              <span className="sr-only">本物の価値を。</span>
+              <span className="hero-value-highlight md:self-start" aria-hidden>
+                <span className="hero-value-stack">
+                  <span className="hero-value-ghost">本物の価値を。</span>
+                  <span className="hero-value-bar-grow" />
+                  <span className="hero-value-chrome">本物の価値を。</span>
+                  <span className="hero-value-white">本物の価値を。</span>
+                </span>
+              </span>
             </h1>
-            <p className="mt-6 hidden max-w-2xl text-lg leading-9 text-charcoal/70 md:block">
-              株式会社FirstCourageは、ブランドバッグ・時計・ジュエリー・貴金属の買取を専門としています。
+            <p className="mt-7 hidden max-w-2xl text-lg font-bold leading-9 text-white [text-shadow:0_1px_12px_rgba(0,0,0,0.35)] md:block">
+              {company.tradeName}は、ブランドバッグ・時計・ジュエリー・貴金属の買取を専門としています。
               思い出の品だからこそ、丁寧な査定と透明なご説明を。まずはLINEで写真をお送りください。
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-row sm:gap-4">
-              <LineButton
-                label="LINEで写真査定"
-                className="min-h-12 px-5 py-3 text-sm shadow-xl sm:min-h-[54px] sm:px-8 sm:text-base btn-luxury"
-              />
-              <PhoneButton
-                label="電話で相談する"
-                className="min-h-12 border-2 border-charcoal/10 px-5 py-3 text-sm text-charcoal hover:bg-charcoal hover:text-white sm:min-h-[54px] sm:px-8 sm:text-base btn-luxury"
-              />
-            </div>
-            <ul className="mt-9 hidden gap-3 text-sm font-medium text-charcoal/70 sm:grid sm:grid-cols-3">
-              {["査定料完全無料", "しつこい営業なし", "許認可を明示して安心"].map((item) => (
-                <li key={item} className="flex items-center gap-2.5 rounded-full border border-red/15 bg-white/90 px-5 py-3 backdrop-blur">
-                  <CheckCircle2 aria-hidden size={17} className="text-crimson" />
-                  {item}
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
 
-      <section className="relative -mt-20 border-y border-red/10 bg-white pb-8">
+      <section className="relative border-y border-red/10 bg-gradient-to-b from-white via-fog to-white py-10 sm:py-12">
         <div className="mx-auto grid max-w-7xl gap-4 px-4 sm:grid-cols-3 sm:px-6">
           {metrics.map((metric) => (
-            <div key={metric.label} className="card-luxury relative overflow-hidden rounded-3xl border border-red/10 bg-white p-6 shadow-luxury">
-              <div className="absolute right-6 top-6 size-1.5 rounded-full bg-crimson" aria-hidden />
-              <p className="text-xs font-bold tracking-[1px] text-charcoal/50">{metric.label}</p>
-              <p className="mt-3 font-serif text-4xl font-bold tracking-tighter text-charcoal">
+            <div
+              key={metric.label}
+              className="card-luxury relative overflow-visible rounded-3xl border border-red/15 bg-white/95 p-6 shadow-luxury backdrop-blur sm:p-7"
+            >
+              <div className="pointer-events-none absolute left-1/2 top-0 z-10 h-[72px] w-[224px] -translate-x-1/2 -translate-y-[calc(50%+14px)] sm:h-20 sm:w-64 sm:-translate-y-[calc(50%+18px)]" aria-hidden>
+                <Image
+                  src="/images/metrics-ornament-alpha.png"
+                  alt=""
+                  fill
+                  sizes="256px"
+                  className="object-contain opacity-95"
+                />
+              </div>
+              <div className="absolute right-5 top-5 text-crimson/20" aria-hidden>
+                *
+              </div>
+              <p className="text-xs font-bold tracking-[0.12em] text-charcoal/55">{metric.label}</p>
+              <p className="mt-3 font-serif text-4xl font-bold tracking-tighter text-charcoal sm:text-[2.6rem]">
                 <span className="text-crimson">{metric.value}</span>
                 <span className="ml-1 text-lg font-sans text-charcoal/60">{metric.unit}</span>
               </p>
@@ -94,35 +87,26 @@ export default function Home() {
         align="center"
         eyebrow="TRUST"
         title="安心できる買取の在り方。"
-        lead="運営元が明確で、しつこい営業をしない。初めての方でも安心してご相談いただける体制を整えています。"
+        lead="運営元が明確で、初めての方でも安心してご相談いただける体制を整えています。"
       >
-        <div className="grid gap-4 md:grid-cols-3">
-          {trustPoints.map((point) => (
-            <InfoCard key={point.title} title={point.title} body={point.body} icon={point.icon} />
-          ))}
-        </div>
-      </Section>
-
-      <CtaBand />
-
-      <div className="relative h-72 overflow-hidden sm:h-96 lg:h-[480px]">
-        <Image
-          src="/images/event-venue-wide.jpg"
-          alt="FirstCourage 催事会場"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/75 to-black/60" />
-        <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-          <div className="max-w-4xl">
-            <p className="mb-4 text-xs font-bold tracking-[4px] text-white/70">EXPERIENCE</p>
-            <p className="font-serif text-3xl font-bold leading-tight tracking-[-0.01em] text-white sm:text-5xl lg:text-6xl">
-              洗練された空間で、<br />本物だけがわかる対話を。
-            </p>
+        <div className="grid gap-8 lg:gap-10">
+          <figure className="relative h-56 overflow-hidden rounded-2xl border border-red/10 shadow-luxury sm:h-72 md:h-80 lg:h-[22rem]">
+            <Image
+              src="/images/home-trust-hero.png"
+              alt="ジュエリー・時計など査定対象品の物撮り"
+              fill
+              className="object-cover object-[55%_center]"
+              sizes="(min-width: 1280px) 1280px, 100vw"
+            />
+            <figcaption className="sr-only">時計・ジュエリーなど査定対象品の例</figcaption>
+          </figure>
+          <div className="grid gap-4 md:grid-cols-3">
+            {trustPoints.map((point) => (
+              <InfoCard key={point.title} title={point.title} body={point.body} icon={point.icon} />
+            ))}
           </div>
         </div>
-      </div>
+      </Section>
 
       <Section
         align="center"
@@ -133,13 +117,13 @@ export default function Home() {
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
           <div className="relative min-h-80 overflow-hidden rounded-3xl shadow-soft">
             <Image
-              src="/images/line-assessment.png"
-              alt="スマートフォンでLINE査定の写真相談をするイメージ"
+              src="/images/home-smartphone-appraisal.png"
+              alt="スマートフォンでバッグなど品物を撮影して査定に提出する様子"
               fill
               sizes="(min-width: 1024px) 42vw, 100vw"
-              className="object-cover"
+              className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/86 via-navy/38 to-navy/6" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/72 via-navy/25 to-transparent" />
             <div className="absolute bottom-0 left-0 p-6 text-white">
               <p className="text-sm font-bold tracking-[0.12em] text-white/90 drop-shadow">入口はゆるく、説明はまじめに。</p>
               <p className="mt-3 font-serif text-2xl font-bold leading-snug">写真、電話、会場。得意な相談方法から始められます。</p>
@@ -178,9 +162,21 @@ export default function Home() {
         </div>
         <div className="mt-7 grid grid-cols-2 gap-3 sm:mt-8 sm:grid-cols-3 sm:gap-4">
           {[
-            { src: "/images/apparel-coat.jpg", label: "アパレル・コート", sub: "ブランドコート・ジャケットなど" },
-            { src: "/images/shoes-oxford.jpg", label: "靴・シューズ", sub: "ブランド革靴・パンプス・スニーカー" },
-            { src: "/images/accessories-flatlay.jpg", label: "小物・アクセサリー", sub: "財布・ベルト・サングラスなど" }
+            {
+              src: "/images/home-category-apparel.png",
+              label: "アパレル・和装",
+              sub: "着物・帯・ブランド衣類など"
+            },
+            {
+              src: "/images/home-category-shoes.png",
+              label: "靴・シューズ",
+              sub: "革靴・ローファー・スニーカーなど"
+            },
+            {
+              src: "/images/home-category-leather.png",
+              label: "小物・革製品",
+              sub: "財布・カードケース・キーケースなど"
+            }
           ].map(({ src, label, sub }) => (
             <div key={label} className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-soft">
               <Image src={src} alt={label} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
@@ -261,8 +257,6 @@ export default function Home() {
           </ul>
         </div>
       </Section>
-
-      <CtaBand tone="dark" />
     </>
   );
 }

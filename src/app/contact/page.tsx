@@ -1,16 +1,15 @@
 import { FileText, MessageCircle, Phone } from "lucide-react";
-import { CtaBand } from "@/components/CtaBand";
 import { DecorativeIcon } from "@/components/Cards";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
-import { ButtonLink, LineButton, PhoneButton } from "@/components/ButtonLink";
+import { ButtonLink } from "@/components/ButtonLink";
 import { company, flowSteps } from "@/data/site";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
   title: "お問い合わせ・LINE査定",
   description:
-    "LINEで写真を送るだけ、またはお電話でFirstCourageにご相談ください。査定料無料・しつこい営業なし。",
+    "LINEで写真を送るだけ、またはお電話で買い取りバンクにご相談ください。査定のご案内を丁寧に行います。",
   path: "/contact"
 });
 
@@ -35,9 +34,6 @@ export default function ContactPage() {
               <p className="mt-3 leading-8 text-ink/72">
                 品物の写真をLINEで送るだけで、売れるかどうかや目安金額を事前に確認できます。来場前に相談できるため、初めての方にも安心です。
               </p>
-              <div className="mt-6">
-                <LineButton />
-              </div>
             </div>
           </div>
 
@@ -52,9 +48,6 @@ export default function ContactPage() {
               </p>
               <p className="mt-4 font-serif text-2xl font-bold text-navy">{company.phone}</p>
               <p className="mt-1 text-xs text-ink/50">{company.phoneHours}</p>
-              <div className="mt-5">
-                <PhoneButton />
-              </div>
             </div>
           </div>
 
@@ -106,8 +99,6 @@ export default function ContactPage() {
           ))}
         </div>
       </Section>
-
-      <CtaBand />
     </>
   );
 }

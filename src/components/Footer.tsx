@@ -3,10 +3,11 @@ import { company, navItems } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="border-t-4 border-gold bg-ink py-12 text-white">
+    <footer className="border-t-4 border-gold bg-ink py-12 pb-28 text-white sm:pb-32">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.2fr_1fr]">
         <div>
-          <p className="font-serif text-xl font-bold">{company.name}</p>
+          <p className="font-serif text-xl font-bold text-white">{company.tradeName}</p>
+          <p className="mt-1 text-sm font-bold text-white/85">{company.name}</p>
           <p className="mt-3 max-w-md text-sm leading-7 text-white/70">{company.business}</p>
           <dl className="mt-5 grid gap-2 text-sm text-white/78">
             <div>

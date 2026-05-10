@@ -35,6 +35,18 @@ h1, h2, h3, h4, h5, h6 {
   overflow-wrap: anywhere;
 }
 
+/* トップヒーロー見出し：和文ディスプレイの字詰め（palt）＋やや正の字間 */
+.hero-title-display {
+  font-feature-settings: "palt" 1;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 768px) {
+  .hero-title-display {
+    letter-spacing: 0.035em;
+  }
+}
+
 @supports not (word-break: auto-phrase) {
   :lang(ja),
   body,
@@ -45,7 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background: #fee2e2;
+  background: #ecd4d8;
   color: #111111;
 }
 
@@ -79,7 +91,7 @@ a, button {
   left: 0;
   width: 0;
   height: 1px;
-  background: #B91C1C;
+  background: #6D2E3A;
   transition: width 0.3s cubic-bezier(0.23, 1.0, 0.32, 1);
 }
 .nav-link:hover:after {
@@ -87,7 +99,7 @@ a, button {
 }
 
 :focus-visible {
-  outline: 2px solid #b4232a;
+  outline: 2px solid #6D2E3A;
   outline-offset: 2px;
 }
 
@@ -127,7 +139,7 @@ a, button {
 }
 .btn-luxury:hover {
   transform: translateY(-1px);
-  box-shadow: 0 20px 40px -10px rgb(185 28 28 / 0.25);
+  box-shadow: 0 20px 40px -10px rgb(109 46 58 / 0.28);
 }
 .btn-luxury:active {
   transform: scale(0.985);
@@ -139,5 +151,157 @@ a, button {
 .card-luxury:hover {
   transform: translateY(-4px);
   box-shadow: 0 30px 70px -20px rgb(0 0 0 / 0.12);
-  border-color: #B91C1C;
+  border-color: #6D2E3A;
+}
+
+/* 左→右に「開く」クリップ（バー・色付き文字で共有。終了後も維持） */
+@keyframes hero-reveal-uncover {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* 上層の白文字を左から削って、バーの右端＝色がついた文字の境界に */
+@keyframes hero-reveal-mask-white {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes hero-value-bar-colors {
+  0% {
+    background-color: #c75f72;
+  }
+  28% {
+    background-color: #9a3d52;
+  }
+  55% {
+    background-color: #6d2e3a;
+  }
+  78% {
+    background-color: #5c2834;
+  }
+  100% {
+    background-color: #4a1f28;
+  }
+}
+
+/* 下層の文字：バーが通った領域から見え、色が進んでいく */
+@keyframes hero-value-text-chroma {
+  0% {
+    color: #6d2e3a;
+  }
+  18% {
+    color: #8b4a58;
+  }
+  36% {
+    color: #b89262;
+  }
+  54% {
+    color: #e5d4bc;
+  }
+  72% {
+    color: #f2ebe3;
+  }
+  100% {
+    color: #ffffff;
+  }
+}
+
+.hero-value-highlight {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.hero-value-stack {
+  display: grid;
+}
+
+.hero-value-stack > * {
+  grid-area: 1 / 1;
+}
+
+.hero-value-ghost {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.hero-value-bar-grow {
+  align-self: center;
+  z-index: 0;
+  width: 100%;
+  /* 縦だけ：見出しの行高（1lh）の約1.2倍。横幅はグリッド幅＝「本物の価値を。」と同じ */
+  line-height: inherit;
+  height: 1.2em;
+  height: calc(1.2 * 1lh);
+  border-radius: 3px;
+  background-color: #c75f72;
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
+  animation:
+    hero-reveal-uncover 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    hero-value-bar-colors 1.35s ease forwards;
+}
+
+.hero-value-chrome {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: #6d2e3a;
+  clip-path: inset(0 100% 0 0);
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  animation:
+    hero-reveal-uncover 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    hero-value-text-chroma 1.45s cubic-bezier(0.45, 0.05, 0.25, 1) forwards;
+}
+
+.hero-value-white {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: #ffffff;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
+  clip-path: inset(0 0 0 0);
+  pointer-events: none;
+  animation: hero-reveal-mask-white 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-value-bar-grow,
+  .hero-value-chrome,
+  .hero-value-white {
+    animation: none;
+  }
+
+  .hero-value-bar-grow {
+    clip-path: inset(0 0 0 0);
+    background-color: #6d2e3a;
+  }
+
+  .hero-value-chrome {
+    clip-path: inset(0 0 0 0);
+    color: #ffffff;
+  }
+
+  .hero-value-white {
+    clip-path: inset(0 0 0 100%);
+    opacity: 0;
+  }
 }

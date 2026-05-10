@@ -13,12 +13,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-white shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6">
         <Link href="/" className="min-w-0 whitespace-nowrap" onClick={closeMenu}>
-          <p className="font-serif text-base font-bold tracking-wide text-navy sm:text-xl">
-            {company.name}
+          <p className="font-serif text-lg font-bold tracking-wide text-crimson sm:text-2xl">
+            {company.tradeName}
           </p>
           <p className="mt-0.5 text-[11px] font-bold text-ink/58 sm:text-xs">
+            <span className="text-ink/65">{company.name}</span>
+            <span aria-hidden className="mx-1 text-ink/35">
+              ·
+            </span>
             ブランド品買取・全国催事対応
           </p>
         </Link>
@@ -74,30 +78,25 @@ export function Header() {
             className="absolute inset-x-0 top-0 h-full overflow-hidden bg-white shadow-2xl"
             onClick={e => e.stopPropagation()}
           >
-            {/* Elegant top bar */}
-            <div className="flex items-center justify-between border-b border-red/10 px-6 py-5">
-              <div>
-                <p className="font-serif text-xl font-bold tracking-[1px] text-crimson">{company.name}</p>
-                <p className="text-[10px] font-medium tracking-[2px] text-charcoal/60">EST. 2018</p>
-              </div>
-              <button 
-                onClick={closeMenu} 
-                className="rounded-full p-3 text-crimson transition hover:bg-red/5 active:bg-red/10"
+            <div className="mx-auto flex w-full max-w-7xl justify-end px-4 py-2 sm:px-6">
+              <button
+                onClick={closeMenu}
+                className="group inline-flex min-h-12 min-w-12 items-center justify-center overflow-hidden rounded-full border border-red/20 bg-white text-crimson shadow-lg ring-1 ring-red/10 transition-all duration-300 hover:border-crimson/40 hover:shadow-xl active:scale-[0.975]"
                 aria-label="メニューを閉じる"
               >
-                <X size={26} />
+                <X size={22} />
               </button>
             </div>
 
             {/* Luxurious menu items */}
-            <nav className="px-6 pt-8 pb-12" aria-label="モバイルナビゲーション">
+            <nav className="px-6 pt-0 pb-12" aria-label="モバイルナビゲーション">
               <div className="space-y-1">
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
-                    className="group flex items-center justify-between border-b border-red/5 py-5 text-[17px] font-medium tracking-wide text-charcoal transition-colors hover:text-crimson"
+                    className="group flex items-center justify-between border-b border-red/5 py-4 text-[17px] font-medium tracking-wide text-charcoal transition-colors hover:text-crimson"
                   >
                     <span>{item.label}</span>
                     <span className="text-xs text-crimson/50 group-hover:translate-x-1 transition">→</span>

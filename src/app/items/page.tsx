@@ -1,18 +1,56 @@
 import Image from "next/image";
-import { CtaBand } from "@/components/CtaBand";
 import { DecorativeIcon } from "@/components/Cards";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { itemCategories } from "@/data/site";
 import { createMetadata } from "@/lib/seo";
 
-const featuredItems = [
-  { src: "/images/watch-chronograph.jpg", category: "高級時計", title: "クロノグラフ・機械式時計", note: "稼働品・不動品ともに相談可" },
-  { src: "/images/watch-modern.jpg", category: "高級時計", title: "ドレスウォッチ・現行モデル", note: "国内外ブランド対応" },
-  { src: "/images/jewelry-diamond.jpg", category: "ジュエリー", title: "ダイヤモンド・色石ジュエリー", note: "鑑定書なしでも査定可能" },
-  { src: "/images/gold-bullion.jpg", category: "金・貴金属", title: "金・コイン・地金", note: "当日相場で迅速査定" },
-  { src: "/images/wallet-leather.jpg", category: "ブランド小物", title: "財布・革小物", note: "使用感のある品物も相談可" },
-  { src: "/images/apparel-coat.jpg", category: "アパレル", title: "ブランドコート・ジャケット", note: "シーズン物もご相談ください" }
+type FeaturedExample = {
+  src: string;
+  category: string;
+  title: string;
+  note: string;
+  imageClass?: string;
+};
+
+const featuredItems: FeaturedExample[] = [
+  {
+    src: "/images/items-example-watch-mechanical.png",
+    category: "高級時計",
+    title: "クロノグラフ・機械式時計",
+    note: "稼働品・不動品ともに相談可"
+  },
+  {
+    src: "/images/items-example-watch-lifestyle.png",
+    category: "高級時計",
+    title: "ドレスウォッチ・現行モデル",
+    note: "国内外ブランド対応"
+  },
+  {
+    src: "/images/stock-colored-gems-diamonds-on-rock.png",
+    category: "ジュエリー",
+    title: "ダイヤモンド・色石ジュエリー",
+    note: "鑑定書なしでも査定可能",
+    imageClass: "object-cover object-center"
+  },
+  {
+    src: "/images/items-example-gold-ingot.png",
+    category: "金・貴金属",
+    title: "金・コイン・地金",
+    note: "当日相場で迅速査定"
+  },
+  {
+    src: "/images/items-example-leather-goods.png",
+    category: "ブランド小物",
+    title: "財布・革小物",
+    note: "使用感のある品物も相談可"
+  },
+  {
+    src: "/images/items-example-apparel.png",
+    category: "アパレル・和装",
+    title: "ブランド衣類・着物・帯",
+    note: "洋服・呉服・シーズン物もご相談ください"
+  }
 ];
 
 export const metadata = createMetadata({
@@ -67,18 +105,18 @@ export default function ItemsPage() {
       >
         <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
           {featuredItems.map((item) => (
-            <div key={item.title} className="overflow-hidden rounded-lg border border-ink/10 bg-white shadow-soft">
-              <div className="relative aspect-[4/3] w-full">
+            <div key={item.title} className="overflow-hidden rounded-xl border border-ink/10 bg-white shadow-soft">
+              <div className="relative aspect-[4/3] w-full bg-fog">
                 <Image
                   src={item.src}
-                  alt={item.title}
+                  alt={`${item.category}：${item.title}の買取例イメージ`}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
+                  className={item.imageClass ?? "object-cover"}
                 />
               </div>
               <div className="p-3 sm:p-5">
-                <p className="text-[11px] font-bold tracking-wide text-gold sm:text-xs">{item.category}</p>
+                <p className="text-[11px] font-bold tracking-wide text-crimson sm:text-xs">{item.category}</p>
                 <h3 className="mt-1 text-sm font-bold leading-snug text-navy sm:mt-2 sm:text-base">{item.title}</h3>
                 <p className="mt-1 text-xs leading-5 text-ink/65 sm:mt-2 sm:text-sm sm:leading-6">{item.note}</p>
               </div>
@@ -110,8 +148,6 @@ export default function ItemsPage() {
           ))}
         </div>
       </Section>
-
-      <CtaBand tone="dark" />
     </>
   );
 }

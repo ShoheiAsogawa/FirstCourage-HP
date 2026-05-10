@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { CtaBand } from "@/components/CtaBand";
 import { DecorativeIcon, InfoCard } from "@/components/Cards";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
@@ -9,7 +8,7 @@ import { createMetadata } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "初めての方へ",
   description:
-    "ブランド品買取が初めての方へ。査定だけでも相談でき、無理な営業をしないFirstCourageの安心設計を説明します。",
+    "ブランド品買取が初めての方へ。査定だけでも相談でき、無理な営業をしない買い取りバンクの安心設計を説明します。",
   path: "/first-time"
 });
 
@@ -78,7 +77,6 @@ export default function FirstTimePage() {
           ))}
         </div>
       </Section>
-      <CtaBand />
     </>
   );
 }

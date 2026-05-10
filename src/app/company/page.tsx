@@ -1,4 +1,3 @@
-import { CtaBand } from "@/components/CtaBand";
 import { InfoCard } from "@/components/Cards";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
@@ -8,13 +7,14 @@ import { createMetadata } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "会社概要",
   description:
-    "株式会社FirstCourageの会社概要。所在地、代表者、古物商許可番号、電話番号などを掲載しています。",
+    "買い取りバンク（運営：株式会社FirstCourage）の会社概要。所在地、代表者、古物商許可番号、電話番号などを掲載しています。",
   path: "/company"
 });
 
 export default function CompanyPage() {
   const companyRows: [string, string][] = [
     ["会社名", company.name],
+    ["屋号", company.tradeName],
     ["代表者", company.representative],
     ["所在地", company.address],
     ["古物商許可番号", company.license],
@@ -102,8 +102,6 @@ export default function CompanyPage() {
           </p>
         </div>
       </Section>
-
-      <CtaBand tone="dark" />
     </>
   );
 }

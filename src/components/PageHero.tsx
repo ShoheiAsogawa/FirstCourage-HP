@@ -1,5 +1,3 @@
-import { LineButton, PhoneButton } from "@/components/ButtonLink";
-
 export function PageHero({
   eyebrow,
   title,
@@ -20,10 +18,6 @@ export function PageHero({
           {title}
         </h1>
         <p className="mt-5 max-w-3xl leading-8 text-ink/74">{lead}</p>
-        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          <LineButton />
-          <PhoneButton />
-        </div>
       </div>
     </section>
   );

@@ -18,12 +18,13 @@
 } from "lucide-react";
 
 export const company = {
+  tradeName: "買い取りバンク",
   name: "株式会社FirstCourage",
   nameEn: "FirstCourage Inc.",
-  area: "全国対応",
+  area: "全国対応（本社：大阪）",
   business: "ブランド品・時計・ジュエリー・貴金属の催事買取、LINE無料査定、買取相談",
   license: "古物商許可番号：第000000000000号",
-  address: "東京都〇〇区〇〇 0-0-0",
+  address: "〒540-0009 大阪府大阪市中央区谷町９丁目２－１２－３０２",
   representative: "代表取締役：山田 太郎",
   phone: "0120-000-000",
   phoneHours: "10:00-18:00 / 土日祝も相談受付",
@@ -190,9 +191,9 @@ export const flowSteps = [
 ] as const;
 
 export const eventHistory = [
+  "関西エリア（大阪本社を拠点）ブランド品査定会",
   "関東エリア 商業施設催事",
-  "中部エリア 期間限定相談会",
-  "関西エリア ブランド品無料査定会"
+  "中部エリア 期間限定相談会"
 ] as const;
 
 export const testimonials = [
@@ -244,13 +245,13 @@ export const articles = [] as const;
 
 export const imagePrompts = [
   {
-    fileName: "hero-consultation.png",
+    fileName: "stock-marble-consultation-watch-ring.png",
     role: "トップページのヒーロー画像。上品なブランド品と相談しやすさを一瞬で伝える。",
     prompt:
       "Use case: photorealistic-natural. Asset type: website hero image for a Japanese luxury brand buying consultation service. Scene/backdrop: bright clean consultation table in a refined private event booth, white and warm neutral interior. Subject: elegant leather handbag, watch, jewelry tray, smartphone showing a LINE chat-style assessment screen without readable text, and a calm staff hand gesture. Style/medium: photorealistic editorial commercial photography. Composition/framing: landscape 16:9, usable negative space on left, products on right, eye-level. Lighting/mood: soft natural light, trustworthy, warm, clean. Color palette: white, navy accents, subdued gold, dark gray. Constraints: no brand logos, no readable text, no people faces, no flashy luxury, no watermark."
   },
   {
-    fileName: "line-assessment.png",
+    fileName: "home-line-assessment.png",
     role: "LINE査定ページ・CTA用。写真を送るだけの気軽さを表現する。",
     prompt:
       "Use case: photorealistic-natural. Asset type: LINE assessment feature image. Scene/backdrop: clean desk with smartphone, handbag detail photos, small jewelry case, soft stationery. Subject: smartphone with generic chat bubbles and image thumbnails, no readable text or official logo. Style/medium: warm realistic product-lifestyle photo. Composition/framing: square, top-down 45 degree angle, clear focus on phone and product photos. Lighting/mood: approachable, calm, safe. Color palette: white, linen, navy, muted gold. Constraints: no brand marks, no readable UI text, no aggressive sale atmosphere, no watermark."
@@ -262,13 +263,13 @@ export const imagePrompts = [
       "Use case: photorealistic-natural. Asset type: event buying booth image. Scene/backdrop: tasteful temporary consultation booth inside a bright shopping facility, small sign with no readable text, tidy table, chairs, privacy-conscious spacing. Subject: staff silhouette from behind explaining documents to an older customer, no identifiable faces. Style/medium: realistic editorial photo. Composition/framing: 4:3, clean lines, booth and consultation table visible. Lighting/mood: safe, professional, friendly. Color palette: white, charcoal, navy, restrained gold. Constraints: no readable text, no crowded scene, no pressure-sales feeling, no watermark."
   },
   {
-    fileName: "items-flatlay.png",
+    fileName: "stock-mixed-luxury-goods-flatlay-wide.png",
     role: "買取品目一覧用。バッグ・時計・ジュエリー・貴金属を上品に見せる。",
     prompt:
       "Use case: product-mockup. Asset type: category overview image. Scene/backdrop: premium white marble and linen surface. Subject: generic luxury-style handbag without logo, wristwatch without logo, gold necklace, ring, wallet, neatly arranged. Style/medium: photorealistic catalog editorial. Composition/framing: wide flat lay, balanced spacing for cropping. Lighting/mood: clean, refined, not flashy. Color palette: ivory, navy shadow, muted gold, soft gray. Constraints: no recognizable brand logos, no text, no watermark."
   },
   {
-    fileName: "trust-company.png",
+    fileName: "home-trust-hero.png",
     role: "会社概要・安心訴求用。許認可と運営元が明確である印象を出す。",
     prompt:
       "Use case: photorealistic-natural. Asset type: trust and company information image. Scene/backdrop: clean office desk with neatly placed documents, certificate folder, pen, business card with unreadable placeholder text. Subject: hands placing a document beside a small jewelry box. Style/medium: realistic business editorial photography. Composition/framing: landscape 4:3, calm and uncluttered. Lighting/mood: transparent, sincere, professional. Color palette: white, dark gray, navy, muted gold. Constraints: no readable legal numbers, no brand logo, no faces, no watermark."

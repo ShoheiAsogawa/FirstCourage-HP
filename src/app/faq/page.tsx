@@ -1,4 +1,3 @@
-import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { faqs } from "@/data/site";
@@ -6,7 +5,7 @@ import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
   title: "よくある質問",
-  description: "LINE査定、催事買取、付属品、査定だけの相談など、FirstCourageによくある質問。",
+  description: "LINE査定、催事買取、付属品、査定だけの相談など、買い取りバンクによくある質問。",
   path: "/faq"
 });
 
@@ -28,7 +27,6 @@ export default function FaqPage() {
           ))}
         </div>
       </Section>
-      <CtaBand tone="dark" />
     </>
   );
 }

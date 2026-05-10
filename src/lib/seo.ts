@@ -12,7 +12,7 @@ export function createMetadata({
   description: string;
   path?: string;
 }): Metadata {
-  const fullTitle = `${title} | ${company.name}`;
+  const fullTitle = `${title} | ${company.tradeName}`;
   const url = `${siteUrl}${path}`;
 
   return {
@@ -23,7 +23,7 @@ export function createMetadata({
       title: fullTitle,
       description,
       url,
-      siteName: company.name,
+      siteName: company.tradeName,
       locale: "ja_JP",
       type: "website"
     },
@@ -38,10 +38,18 @@ export function createMetadata({
 export const siteJsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: company.name,
+  name: company.tradeName,
+  alternateName: company.name,
   areaServed: "JP",
   telephone: company.phone,
-  address: company.address,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "谷町９丁目２－１２－３０２",
+    addressLocality: "大阪市中央区",
+    addressRegion: "大阪府",
+    postalCode: "540-0009",
+    addressCountry: "JP"
+  },
   legalName: company.name,
   description: company.business
 };

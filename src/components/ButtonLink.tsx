@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { ComponentProps } from "react";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, MessageCircle, Phone } from "lucide-react";
 import { company } from "@/data/site";
 
 type Variant = "line" | "phone" | "outline" | "dark";
@@ -33,16 +32,7 @@ export function ButtonLink({
   const merged = `${base} ${variants[variant]}${className ? ` ${className}` : ""}`;
   return (
     <Link href={href} className={merged} {...props}>
-      {variant === "line" && showLeadingIcon ? (
-        <Image
-          src="/images/line-logo.png"
-          alt=""
-          width={22}
-          height={22}
-          className="rounded-[5px] bg-white"
-          aria-hidden
-        />
-      ) : null}
+      {variant === "line" && showLeadingIcon ? <MessageCircle aria-hidden size={20} strokeWidth={2.25} /> : null}
       {variant === "phone" && showLeadingIcon ? <Phone aria-hidden size={18} /> : null}
       <span>{children}</span>
       {showArrow ? <ArrowRight aria-hidden size={17} /> : null}

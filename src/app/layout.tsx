@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { StickyCtaBar } from "@/components/StickyCtaBar";
 import { company } from "@/data/site";
 import { siteJsonLd } from "@/lib/seo";
 import "./globals.css";
@@ -9,15 +10,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://firstcourage.example.com"),
   title: {
-    default: `${company.name} | ブランド品買取・LINE無料査定`,
-    template: `%s | ${company.name}`
+    default: `${company.tradeName} | ブランド品買取・LINE無料査定`,
+    template: `%s | ${company.tradeName}`
   },
   description:
-    "ブランドバッグ、時計、ジュエリー、金・貴金属の催事買取とLINE無料査定。写真を送るだけで、初めての方も気軽に相談できます。",
+    "買い取りバンク（運営：株式会社FirstCourage）。ブランドバッグ、時計、ジュエリー、金・貴金属の催事買取とLINE無料査定。写真を送るだけで、初めての方も気軽に相談できます。",
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    siteName: company.name
+    siteName: company.tradeName
   }
 };
 
@@ -31,8 +32,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }}
         />
         <Header />
-        <main className="pt-[69px]">{children}</main>
+        <main className="pb-[calc(4.25rem+env(safe-area-inset-bottom,0px))] sm:pb-[calc(4.75rem+env(safe-area-inset-bottom,0px))]">
+          {children}
+        </main>
         <Footer />
+        <StickyCtaBar />
       </body>
     </html>
   );

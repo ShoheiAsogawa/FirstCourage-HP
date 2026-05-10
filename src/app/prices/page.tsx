@@ -1,4 +1,3 @@
-import { CtaBand } from "@/components/CtaBand";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { priceReferences } from "@/data/site";
@@ -37,7 +36,6 @@ export default function PricesPage() {
           参考価格は、根拠のない高額表示で期待をあおるためのものではありません。品物の状態や市場相場により変動するため、LINE査定や催事会場で現物を確認しながら説明します。
         </p>
       </Section>
-      <CtaBand />
     </>
   );
 }

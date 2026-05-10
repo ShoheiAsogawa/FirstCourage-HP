@@ -14,11 +14,11 @@ const fallbackIcons = {
 
 const images = {
   hero: {
-    src: "/images/hero-consultation.png",
+    src: "/images/stock-marble-consultation-watch-ring.png",
     alt: "ブランド品の査定相談"
   },
   line: {
-    src: "/images/line-assessment.png",
+    src: "/images/home-line-assessment.png",
     alt: "LINEで写真を送るだけの査定"
   },
   event: {
@@ -26,11 +26,11 @@ const images = {
     alt: "催事会場での査定相談"
   },
   items: {
-    src: "/images/items-flatlay.png",
+    src: "/images/stock-mixed-luxury-goods-flatlay-wide.png",
     alt: "買取対象のブランド品"
   },
   trust: {
-    src: "/images/trust-company.png",
+    src: "/images/home-trust-hero.png",
     alt: "丁寧な接客の査定相談"
   }
 } as const;
