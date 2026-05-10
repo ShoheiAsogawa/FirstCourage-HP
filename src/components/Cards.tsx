@@ -5,7 +5,7 @@ import type { LucideIcon } from "lucide-react";
 export function DecorativeIcon({
   icon: Icon,
   className = "",
-  size = 190
+  size = 160
 }: {
   icon: LucideIcon;
   className?: string;
@@ -15,8 +15,8 @@ export function DecorativeIcon({
     <Icon
       aria-hidden
       size={size}
-      strokeWidth={1.05}
-      className={`pointer-events-none absolute -bottom-10 -right-10 z-0 text-gold opacity-[0.075] ${className}`}
+      strokeWidth={0.8}
+      className={`pointer-events-none absolute -bottom-8 -right-8 z-0 text-crimson opacity-[0.04] transition-opacity duration-500 group-hover:opacity-[0.08] ${className}`}
     />
   );
 }
@@ -33,17 +33,23 @@ export function InfoCard({
   href?: string;
 }) {
   const content = (
-    <div className="group relative h-full overflow-hidden rounded-lg border border-gold-soft/55 bg-white p-5 shadow-sm transition hover:border-gold">
+    <div className="card-luxury group relative h-full overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-6 shadow-card">
       {Icon ? (
-        <DecorativeIcon icon={Icon} className="transition group-hover:opacity-[0.12]" />
+        <DecorativeIcon icon={Icon} />
       ) : null}
       <div className="relative z-10">
-        <h3 className="text-lg font-bold text-navy">{title}</h3>
-        <p className="mt-3 leading-7 text-ink/70">{body}</p>
+        {Icon ? (
+          <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-crimson-light/60 to-crimson-light/20 text-crimson shadow-sm">
+            <Icon aria-hidden size={22} strokeWidth={1.8} />
+          </div>
+        ) : null}
+        <h3 className="text-lg font-bold text-charcoal">{title}</h3>
+        <p className="mt-3 leading-7 text-charcoal/62">{body}</p>
       </div>
       {href ? (
-        <p className="relative z-10 mt-4 inline-flex items-center gap-2 text-sm font-bold text-gold">
-          詳しく見る <ArrowRight aria-hidden size={16} />
+        <p className="relative z-10 mt-5 inline-flex items-center gap-2 text-sm font-bold text-crimson transition-colors group-hover:text-crimson-dark">
+          詳しく見る
+          <ArrowRight aria-hidden size={15} className="transition-transform duration-300 group-hover:translate-x-1.5" />
         </p>
       ) : null}
     </div>
@@ -62,7 +68,7 @@ export function PillList({ items }: { items: readonly string[] }) {
       {items.map((item) => (
         <span
           key={item}
-          className="rounded-full border border-gold-soft bg-white px-4 py-2 text-sm font-bold text-navy"
+          className="rounded-full border border-crimson/12 bg-white px-4 py-2 text-sm font-bold text-charcoal shadow-sm transition-colors duration-200 hover:border-crimson/30 hover:bg-crimson-light/30"
         >
           {item}
         </span>

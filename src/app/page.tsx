@@ -1,9 +1,11 @@
 import Image from "next/image";
-import { Quote } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Quote } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { DecorativeIcon, InfoCard } from "@/components/Cards";
 import { Section } from "@/components/Section";
 import {
+  brands,
   company,
   eventHistory,
   flowSteps,
@@ -77,12 +79,14 @@ export default function Home() {
                 <span className="text-crimson">{metric.value}</span>
                 <span className="ml-1 text-lg font-sans text-charcoal/60">{metric.unit}</span>
               </p>
-              {metric.note ? <p className="mt-1 text-xs text-charcoal/50">{metric.note}</p> : null}
+              {metric.note ? <p className="mt-1 text-xs text-charcoal/42">{metric.note}</p> : null}
             </div>
           ))}
         </div>
+        <p className="mx-auto mt-4 max-w-7xl px-5 text-[11px] text-charcoal/32 sm:px-6">※一部数値は開発用プレースホルダーです</p>
       </section>
 
+      {/* ═══ TRUST ═══ */}
       <Section
         align="center"
         eyebrow="TRUST"
@@ -108,6 +112,7 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* ═══ PURCHASE METHODS ═══ */}
       <Section
         align="center"
         tone="fog"
@@ -115,7 +120,7 @@ export default function Home() {
         lead="催事での対面相談を中心に、来場前のLINE査定と電話相談を組み合わせ、不安の少ない入口を用意します。"
       >
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
-          <div className="relative min-h-80 overflow-hidden rounded-3xl shadow-soft">
+          <div className="img-zoom relative min-h-80 overflow-hidden rounded-3xl shadow-luxury">
             <Image
               src="/images/home-smartphone-appraisal.png"
               alt="スマートフォンでバッグなど品物を撮影して査定に提出する様子"
@@ -143,6 +148,7 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* ═══ ITEMS ═══ */}
       <Section
         align="center"
         eyebrow="ITEMS"
@@ -151,16 +157,16 @@ export default function Home() {
       >
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
           {itemCategories.slice(0, 10).map((item) => (
-            <div key={item.name} className="relative overflow-hidden rounded-xl border border-ink/10 bg-white p-3 shadow-sm transition hover:border-gold sm:p-4">
-              <DecorativeIcon icon={item.icon} size={132} />
-              <div className="relative z-10 min-h-28 sm:min-h-28">
-                <h3 className="text-sm font-bold leading-snug text-navy sm:text-base">{item.name}</h3>
-                <p className="mt-2 text-xs leading-5 text-ink/65 sm:text-sm sm:leading-6">{item.description}</p>
+            <div key={item.name} className="card-luxury relative overflow-hidden rounded-xl border border-charcoal/8 bg-white p-3 shadow-card sm:p-4">
+              <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-crimson-light/50 to-crimson-light/15 text-crimson shadow-sm">
+                <item.icon aria-hidden size={20} strokeWidth={1.8} />
               </div>
+              <h3 className="text-sm font-bold text-charcoal sm:text-base">{item.name}</h3>
+              <p className="mt-1.5 text-xs leading-5 text-charcoal/52 sm:text-sm sm:leading-6">{item.description}</p>
             </div>
           ))}
         </div>
-        <div className="mt-7 grid grid-cols-2 gap-3 sm:mt-8 sm:grid-cols-3 sm:gap-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {[
             {
               src: "/images/home-category-apparel.png",
@@ -178,81 +184,145 @@ export default function Home() {
               sub: "財布・カードケース・キーケースなど"
             }
           ].map(({ src, label, sub }) => (
-            <div key={label} className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-soft">
-              <Image src={src} alt={label} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/78 via-ink/28 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-3 sm:p-4">
-                <p className="text-sm font-bold leading-snug text-white sm:text-base">{label}</p>
-                <p className="mt-0.5 text-[11px] leading-snug text-white/80 sm:text-xs">{sub}</p>
+            <div key={label} className="img-zoom group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-card">
+              <Image src={src} alt={label} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-600 ease-luxury group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-5">
+                <p className="font-bold text-white">{label}</p>
+                <p className="mt-1 text-xs text-white/72">{sub}</p>
               </div>
             </div>
           ))}
         </div>
-        <div className="mt-7 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <ButtonLink href="/items" variant="outline">
             買取品目を詳しく見る
           </ButtonLink>
         </div>
       </Section>
 
+      {/* ═══ BRANDS ═══ */}
+      <Section
+        align="center"
+        tone="fog"
+        eyebrow="BRANDS"
+        title="買取強化ブランド"
+        lead="王道ブランドのバッグを中心に、ジュエリー・時計まで幅広く対応しています。"
+      >
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { name: "ルイ・ヴィトン", src: "/images/brand-louis-vuitton.jpg" },
+            { name: "シャネル", src: "/images/brand-chanel.jpg" },
+            { name: "エルメス", src: "/images/brand-hermes.jpg" },
+            { name: "グッチ", src: "/images/brand-gucci.jpg" },
+            { name: "ディオール", src: "/images/brand-dior.jpg" },
+            { name: "プラダ", src: "/images/brand-prada.jpg" },
+            { name: "セリーヌ", src: "/images/brand-celine.jpg" },
+            { name: "ロエベ", src: "/images/brand-loewe.jpg" }
+          ].map(({ name, src }) => (
+            <Link
+              key={name}
+              href="/brands"
+              className="card-luxury group overflow-hidden rounded-2xl border border-charcoal/8 bg-white shadow-card"
+            >
+              <div className="img-zoom relative aspect-square w-full bg-fog">
+                <Image
+                  src={src}
+                  alt={name}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="object-cover transition-transform duration-600 ease-luxury group-hover:scale-110"
+                />
+              </div>
+              <p className="px-4 py-3 text-center text-sm font-bold text-charcoal">{name}</p>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {brands.filter((b) => !["ルイ・ヴィトン","シャネル","エルメス","グッチ","ディオール","プラダ","セリーヌ","ロエベ"].includes(b)).map((brand) => (
+            <Link
+              key={brand}
+              href="/brands"
+              className="card-luxury rounded-xl border border-charcoal/8 bg-white px-3 py-4 text-center text-sm font-bold text-charcoal transition-colors hover:border-crimson/30 hover:bg-crimson-light/20"
+            >
+              {brand}
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      {/* ═══ FLOW ═══ */}
       <Section
         align="center"
         eyebrow="FLOW"
         title="相談から買取までの流れ"
         lead="最初の接点はLINEでも電話でも構いません。納得できた場合のみ、次の手続きへ進みます。"
       >
-        <div className="grid gap-4 md:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-4">
           {flowSteps.map((step, index) => (
-            <div key={step.title} className="relative overflow-hidden rounded-2xl border border-ink/10 bg-white p-5 shadow-sm transition hover:border-gold">
-              <DecorativeIcon icon={step.icon} />
-              <div className="relative z-10">
-                <p className="mb-4 font-serif text-3xl font-bold text-gold">0{index + 1}</p>
-                <h3 className="font-bold text-navy">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-ink/68">{step.body}</p>
+            <div key={step.title} className="card-luxury relative overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-6 shadow-card">
+              <p className="mb-4 font-serif text-4xl font-bold text-crimson/20">0{index + 1}</p>
+              <div className="mb-3 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-crimson-light/50 to-crimson-light/15 text-crimson shadow-sm">
+                <step.icon aria-hidden size={22} strokeWidth={1.8} />
               </div>
+              <h3 className="font-bold text-charcoal">{step.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-charcoal/58">{step.body}</p>
+              {index < 3 ? (
+                <div className="absolute -right-2 top-1/2 hidden -translate-y-1/2 text-crimson/20 md:block">
+                  <ArrowRight size={24} />
+                </div>
+              ) : null}
             </div>
           ))}
         </div>
       </Section>
 
+      {/* ═══ PRICES ═══ */}
       <Section align="center" tone="fog" eyebrow="PRICE" title="買取参考価格">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {priceReferences.slice(0, 3).map((item) => (
-            <div key={item.item} className="rounded-lg border border-ink/10 bg-white p-5">
-              <p className="text-xs font-bold text-gold">{item.category}</p>
-              <h3 className="mt-2 font-bold text-navy">{item.item}</h3>
-              <p className="mt-3 text-sm text-ink/62">{item.condition}</p>
-              <p className="mt-4 font-serif text-2xl font-bold text-navy">{item.price}</p>
-              <p className="mt-2 text-xs text-ink/50">{item.note}</p>
+            <div key={item.item} className="card-luxury relative overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-6 shadow-card">
+              <div className="absolute right-6 top-6 size-1.5 rounded-full bg-crimson/20" aria-hidden />
+              <p className="text-[11px] font-bold tracking-[1.5px] text-crimson">{item.category}</p>
+              <h3 className="mt-2 font-bold text-charcoal">{item.item}</h3>
+              <p className="mt-3 text-sm text-charcoal/52">{item.condition}</p>
+              <p className="mt-4 font-serif text-2xl font-bold text-charcoal">{item.price}</p>
+              <p className="mt-2 text-[11px] text-charcoal/40">{item.note}</p>
             </div>
           ))}
         </div>
-        <div className="mt-7 flex justify-center">
+        <div className="mt-8 flex justify-center">
           <ButtonLink href="/prices" variant="outline">
             参考価格をもっと見る
           </ButtonLink>
         </div>
       </Section>
 
+      {/* ═══ TESTIMONIALS ═══ */}
       <Section align="center" eyebrow="VOICE" title="お客様の声 / 買取実績">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-3">
           {testimonials.map((voice) => (
-            <figure key={voice.name} className="relative overflow-hidden rounded-lg border border-ink/10 bg-white p-5">
-              <DecorativeIcon icon={Quote} size={176} />
-              <div className="relative z-10">
-                <blockquote className="leading-8 text-ink/72">「{voice.body}」</blockquote>
-                <figcaption className="mt-4 text-sm font-bold text-navy">
-                  {voice.name}
-                </figcaption>
-              </div>
+            <figure key={voice.name} className="card-luxury relative overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-6 shadow-card">
+              <Quote aria-hidden size={28} className="mb-2 text-crimson/12" />
+              <blockquote className="leading-8 text-charcoal/68">&ldquo;{voice.body}&rdquo;</blockquote>
+              <figcaption className="mt-5 flex items-center gap-3 text-sm font-bold text-charcoal">
+                <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-crimson-light/50 to-crimson-light/15 text-xs font-bold text-crimson">
+                  {voice.name.charAt(0)}
+                </div>
+                {voice.name}
+                {voice.note ? <span className="font-normal text-charcoal/38">/ {voice.note}</span> : null}
+              </figcaption>
             </figure>
           ))}
         </div>
-        <div className="mt-8 rounded-lg border border-gold-soft bg-fog p-5">
-          <h3 className="font-bold text-navy">催事開催実績</h3>
-          <ul className="mt-3 grid gap-2 text-sm text-ink/70">
+        <div className="mt-8 rounded-2xl border border-crimson/10 bg-gradient-to-br from-crimson-light/15 to-crimson-light/5 p-6">
+          <h3 className="font-bold text-charcoal">催事開催実績</h3>
+          <ul className="mt-3 grid gap-2 text-sm text-charcoal/58">
             {eventHistory.map((event) => (
-              <li key={event}>・{event}</li>
+              <li key={event} className="flex items-start gap-2.5">
+                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-crimson" />
+                {event}
+              </li>
             ))}
           </ul>
         </div>

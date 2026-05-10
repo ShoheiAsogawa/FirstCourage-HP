@@ -6,13 +6,13 @@ import { company } from "@/data/site";
 type Variant = "line" | "phone" | "outline" | "dark";
 
 const base =
-  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold tracking-wider transition focus:outline-none focus:ring-2 focus:ring-crimson/30 focus:ring-offset-2 sm:text-base btn-luxury";
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold tracking-wider transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-crimson/30 focus:ring-offset-2 sm:text-base btn-luxury";
 
 const variants: Record<Variant, string> = {
   line: "border border-[#06c755]/40 bg-[#f0fff4] text-[#065f46] shadow-lg hover:border-[#06c755]/70 hover:bg-[#dcfce7]",
-  phone: "bg-crimson text-white hover:bg-crimson-dark shadow-lg",
-  outline: "border-2 border-charcoal/15 bg-white text-charcoal hover:border-crimson hover:text-crimson",
-  dark: "bg-charcoal text-white hover:bg-black"
+  phone: "bg-crimson text-white shadow-lg hover:bg-crimson-dark hover:shadow-crimson-glow",
+  outline: "border-2 border-charcoal/12 bg-white text-charcoal hover:border-crimson hover:text-crimson hover:shadow-card",
+  dark: "bg-charcoal text-white shadow-lg hover:bg-black hover:shadow-luxury"
 };
 
 export function ButtonLink({
@@ -35,7 +35,9 @@ export function ButtonLink({
       {variant === "line" && showLeadingIcon ? <MessageCircle aria-hidden size={20} strokeWidth={2.25} /> : null}
       {variant === "phone" && showLeadingIcon ? <Phone aria-hidden size={18} /> : null}
       <span>{children}</span>
-      {showArrow ? <ArrowRight aria-hidden size={17} /> : null}
+      {showArrow ? (
+        <ArrowRight aria-hidden size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
+      ) : null}
     </Link>
   );
 }
@@ -46,7 +48,6 @@ export function LineButton({
   className
 }: {
   label?: string;
-  /** アイコン・矢印を消し、文字を強調（トップなど） */
   prominent?: boolean;
   className?: string;
 }) {
@@ -58,7 +59,7 @@ export function LineButton({
       showLeadingIcon={false}
       className={
         prominent
-          ? ["min-h-14 px-8 py-4 text-base font-bold tracking-wide sm:px-10 sm:text-xl", className].filter(Boolean).join(" ")
+          ? ["min-h-14 px-8 py-4 text-base font-bold tracking-wide shadow-xl sm:px-10 sm:text-xl", className].filter(Boolean).join(" ")
           : className
       }
     >
@@ -84,7 +85,7 @@ export function PhoneButton({
       showLeadingIcon={!prominent}
       className={
         prominent
-          ? ["min-h-14 px-8 py-4 text-base font-bold tracking-wide sm:px-10 sm:text-xl", className].filter(Boolean).join(" ")
+          ? ["min-h-14 px-8 py-4 text-base font-bold tracking-wide shadow-crimson-glow sm:px-10 sm:text-xl", className].filter(Boolean).join(" ")
           : className
       }
     >

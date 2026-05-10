@@ -29,15 +29,35 @@ export function Footer() {
           </dl>
         </div>
         <div>
-          <p className="mb-3 text-sm font-bold text-white">サイトメニュー</p>
+          <p className="mb-4 text-xs font-bold tracking-[0.15em] text-crimson">サイトメニュー</p>
           <nav className="grid gap-2 text-sm">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href} className="text-white/76 hover:text-white">
+              <Link key={item.href} href={item.href} className="text-white/58 transition-colors duration-200 hover:text-crimson-glow">
                 {item.label}
               </Link>
             ))}
           </nav>
         </div>
+        <div>
+          <p className="mb-4 text-xs font-bold tracking-[0.15em] text-crimson">相談導線</p>
+          <nav className="grid gap-2 text-sm">
+            <Link href="/contact" className="text-white/58 transition-colors duration-200 hover:text-crimson-glow">
+              お問い合わせ / LINE案内
+            </Link>
+            <Link href="/columns" className="text-white/58 transition-colors duration-200 hover:text-crimson-glow">
+              お役立ち記事
+            </Link>
+            <Link href="/purchase-methods#line" className="text-white/58 transition-colors duration-200 hover:text-crimson-glow">
+              写真を送るだけ査定
+            </Link>
+          </nav>
+          <p className="mt-8 text-xs leading-6 text-white/32">
+            掲載中の一部数値・口コミは開発用プレースホルダーです。公開前に本番値へ差し替えます。
+          </p>
+        </div>
+      </div>
+      <div className="relative mx-auto mt-14 max-w-7xl border-t border-white/8 px-5 pt-8 sm:px-6">
+        <p className="text-[11px] tracking-[1px] text-white/28">&copy; {new Date().getFullYear()} {company.nameEn}. All rights reserved.</p>
       </div>
     </footer>
   );
