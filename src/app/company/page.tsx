@@ -1,8 +1,8 @@
-import { InfoCard } from "@/components/Cards";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
-import { company, trustPoints } from "@/data/site";
+import { company } from "@/data/site";
 import { createMetadata } from "@/lib/seo";
+import Image from "next/image";
 
 export const metadata = createMetadata({
   title: "会社概要",
@@ -15,13 +15,10 @@ export default function CompanyPage() {
   const companyRows: [string, string][] = [
     ["会社名", company.name],
     ["屋号", company.tradeName],
-    ["代表者", company.representative],
     ["所在地", company.address],
     ["古物商許可番号", company.license],
     ["電話番号", company.phone],
-    ["受付時間", company.phoneHours],
-    ["事業内容", company.business],
-    ["実店舗", company.noStoreNote]
+    ["事業内容", company.business]
   ];
 
   return (
@@ -33,6 +30,15 @@ export default function CompanyPage() {
       />
 
       <Section title="会社概要">
+        <div className="mb-8 flex justify-start">
+          <Image
+            src="/images/company-logo-trimmed.png"
+            alt={`${company.name} logo`}
+            width={1476}
+            height={272}
+            className="h-12 w-auto object-contain sm:h-16"
+          />
+        </div>
         <div className="overflow-hidden rounded-lg border border-ink/10 bg-white">
           {companyRows.map(([label, value]) => (
             <dl
@@ -50,6 +56,7 @@ export default function CompanyPage() {
         tone="fog"
         title="事業内容"
         lead="全国各地の催事会場を中心に、LINEと電話でも相談できる体制を整えています。"
+        pattern
       >
         <div className="grid gap-6 md:grid-cols-2">
           {[
@@ -78,15 +85,7 @@ export default function CompanyPage() {
         </div>
       </Section>
 
-      <Section tone="fog" title="催事買取への想い">
-        <div className="grid gap-4 md:grid-cols-3">
-          {trustPoints.map((point) => (
-            <InfoCard key={point.title} title={point.title} body={point.body} icon={point.icon} />
-          ))}
-        </div>
-      </Section>
-
-      <Section tone="fog" title="古物商許可について">
+      <Section tone="fog" title="古物商許可について" pattern>
         <div className="max-w-3xl">
           <p className="leading-8 text-ink/72">
             ブランド品・時計・ジュエリー・貴金属の買取を行うにあたり、古物営業法に基づく古物商許可を取得しています。催事会場での買取にあたっても、法令に基づく本人確認と帳簿管理を適切に行います。
@@ -94,12 +93,7 @@ export default function CompanyPage() {
           <div className="mt-6 rounded-lg border border-gold-soft bg-white p-5">
             <p className="text-sm font-bold text-navy">許可番号</p>
             <p className="mt-2 leading-7 text-ink/74">{company.license}</p>
-            <p className="mt-4 text-sm font-bold text-navy">代表者</p>
-            <p className="mt-2 leading-7 text-ink/74">{company.representative}</p>
           </div>
-          <p className="mt-4 text-sm leading-7 text-ink/60">
-            許可番号・所在地・代表者名に関するご確認は、LINEまたはお電話（{company.phone}）にてお問い合わせいただけます。
-          </p>
         </div>
       </Section>
     </>

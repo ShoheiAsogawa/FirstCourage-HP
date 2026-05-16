@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, Phone, X } from "lucide-react";
 import { company, navItems } from "@/data/site";
@@ -27,14 +28,15 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-ink/10 bg-white shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6">
         <Link href="/" className="min-w-0 whitespace-nowrap" onClick={close}>
-          <p className="font-serif text-lg font-bold tracking-wide text-crimson sm:text-2xl">
-            {company.tradeName}
-          </p>
+          <Image
+            src="/images/brand-logo-trimmed.png"
+            alt={company.tradeName}
+            width={1460}
+            height={342}
+            priority
+            className="h-auto w-[180px] object-contain sm:w-[220px]"
+          />
           <p className="mt-0.5 text-[11px] font-bold text-ink/58 sm:text-xs">
-            <span className="text-ink/65">{company.name}</span>
-            <span aria-hidden className="mx-1 text-ink/35">
-              ·
-            </span>
             ブランド品買取・全国催事対応
           </p>
         </Link>
@@ -65,7 +67,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen(v => !v)}
-          className="group relative inline-flex min-h-12 min-w-12 items-center justify-center overflow-hidden rounded-full border border-red/20 bg-white text-crimson shadow-lg ring-1 ring-red/10 transition-all duration-300 hover:border-crimson/40 hover:shadow-xl active:scale-[0.975] lg:hidden"
+          className="group relative z-[70] inline-flex min-h-12 min-w-12 items-center justify-center overflow-hidden rounded-full border border-red/20 bg-white text-crimson shadow-lg ring-1 ring-red/10 transition-all duration-300 hover:border-crimson/40 hover:shadow-xl active:scale-[0.975] lg:hidden"
           aria-label={open ? "メニューを閉じる" : "メニューを開く"}
           aria-expanded={open}
         >
@@ -85,24 +87,13 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-xl lg:hidden" onClick={close}>
+        <div className="mobile-menu-backdrop fixed inset-0 z-[60] bg-black/60 backdrop-blur-xl lg:hidden" onClick={close}>
           <div
-            className="absolute inset-x-0 top-0 h-full overflow-hidden bg-white shadow-2xl"
+            className="mobile-menu-panel absolute inset-x-0 top-0 h-full overflow-hidden bg-white shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mx-auto flex w-full max-w-7xl justify-end px-4 py-2 sm:px-6">
-              <button
-                type="button"
-                onClick={close}
-                className="group inline-flex min-h-12 min-w-12 items-center justify-center overflow-hidden rounded-full border border-red/20 bg-white text-crimson shadow-lg ring-1 ring-red/10 transition-all duration-300 hover:border-crimson/40 hover:shadow-xl active:scale-[0.975]"
-                aria-label="メニューを閉じる"
-              >
-                <X size={22} />
-              </button>
-            </div>
-
             {/* Luxurious menu items */}
-            <nav className="px-6 pt-0 pb-12" aria-label="モバイルナビゲーション">
+            <nav className="px-6 pt-20 pb-12" aria-label="モバイルナビゲーション">
               <div className="space-y-1">
                 {navItems.map((item) => (
                   <Link

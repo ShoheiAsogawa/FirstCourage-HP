@@ -25,25 +25,39 @@ export function InfoCard({
   title,
   body,
   icon: Icon,
-  href
+  href,
+  showIcon = true,
+  animatedUnderline = false
 }: {
   title: string;
   body: string;
   icon?: LucideIcon;
   href?: string;
+  showIcon?: boolean;
+  animatedUnderline?: boolean;
 }) {
   const content = (
     <div className="card-luxury group relative h-full overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-6 shadow-card">
-      {Icon ? (
+      {Icon && showIcon ? (
         <DecorativeIcon icon={Icon} />
       ) : null}
       <div className="relative z-10">
-        {Icon ? (
+        {Icon && showIcon ? (
           <div className="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-crimson-light/60 to-crimson-light/20 text-crimson shadow-sm">
             <Icon aria-hidden size={22} strokeWidth={1.8} />
           </div>
         ) : null}
-        <h3 className="text-lg font-bold text-charcoal">{title}</h3>
+        <h3
+          className={`font-bold ${
+            animatedUnderline
+              ? "trust-title-underline text-lg text-crimson"
+              : showIcon
+                ? "text-lg text-charcoal"
+                : "text-2xl text-crimson"
+          }`}
+        >
+          {title}
+        </h3>
         <p className="mt-3 leading-7 text-charcoal/62">{body}</p>
       </div>
       {href ? (

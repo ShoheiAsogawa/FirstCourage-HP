@@ -42,14 +42,14 @@ export default function FirstTimePage() {
         </div>
       </Section>
 
-      <Section tone="fog" title="不安を減らす3つのお約束">
+      <Section tone="fog" title="不安を減らす3つのお約束" pattern>
         <div className="grid gap-4 md:grid-cols-3">
           {trustPoints.map((point) => (
             <InfoCard key={point.title} title={point.title} body={point.body} icon={point.icon} />
           ))}
         </div>
       </Section>
-      <Section tone="fog" title="初めての方におすすめの進め方">
+      <Section tone="fog" title="初めての方におすすめの進め方" pattern>
         <div className="grid gap-4 md:grid-cols-4">
           {flowSteps.map((step, index) => (
             <div key={step.title} className="relative overflow-hidden rounded-lg border border-ink/10 bg-white p-5 transition hover:border-gold">

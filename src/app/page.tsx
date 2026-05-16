@@ -1,13 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight, Quote } from "lucide-react";
+import { ArrowRight, Quote, UserRound } from "lucide-react";
 import { ButtonLink } from "@/components/ButtonLink";
-import { DecorativeIcon, InfoCard } from "@/components/Cards";
+import { InfoCard } from "@/components/Cards";
+import { IntroAnimation } from "@/components/IntroAnimation";
+import { MetricsStrip } from "@/components/MetricsStrip";
 import { Section } from "@/components/Section";
 import {
-  brands,
   company,
-  eventHistory,
   flowSteps,
   itemCategories,
   metrics,
@@ -20,6 +19,7 @@ import {
 export default function Home() {
   return (
     <>
+      <IntroAnimation />
       {/* Hero: 画像を活かしつつ、見出しはモバイルは画面中央寄せ・デスクトップは左ブロック */}
       <section className="relative isolate flex min-h-[100dvh] items-center justify-center overflow-hidden bg-white text-charcoal sm:min-h-[820px] md:justify-start">
         <Image
@@ -41,8 +41,6 @@ export default function Home() {
               <span className="hero-value-highlight md:self-start" aria-hidden>
                 <span className="hero-value-stack">
                   <span className="hero-value-ghost">本物の価値を。</span>
-                  <span className="hero-value-bar-grow" />
-                  <span className="hero-value-chrome">本物の価値を。</span>
                   <span className="hero-value-white">本物の価値を。</span>
                 </span>
               </span>
@@ -56,34 +54,7 @@ export default function Home() {
       </section>
 
       <section className="relative border-y border-red/10 bg-gradient-to-b from-white via-fog to-white py-10 sm:py-12">
-        <div className="mx-auto grid max-w-7xl gap-4 px-4 sm:grid-cols-3 sm:px-6">
-          {metrics.map((metric) => (
-            <div
-              key={metric.label}
-              className="card-luxury relative overflow-visible rounded-3xl border border-red/15 bg-white/95 p-6 shadow-luxury backdrop-blur sm:p-7"
-            >
-              <div className="pointer-events-none absolute left-1/2 top-0 z-10 h-[72px] w-[224px] -translate-x-1/2 -translate-y-[calc(50%+14px)] sm:h-20 sm:w-64 sm:-translate-y-[calc(50%+18px)]" aria-hidden>
-                <Image
-                  src="/images/metrics-ornament-alpha.png"
-                  alt=""
-                  fill
-                  sizes="256px"
-                  className="object-contain opacity-95"
-                />
-              </div>
-              <div className="absolute right-5 top-5 text-crimson/20" aria-hidden>
-                *
-              </div>
-              <p className="text-xs font-bold tracking-[0.12em] text-charcoal/55">{metric.label}</p>
-              <p className="mt-3 font-serif text-4xl font-bold tracking-tighter text-charcoal sm:text-[2.6rem]">
-                <span className="text-crimson">{metric.value}</span>
-                <span className="ml-1 text-lg font-sans text-charcoal/60">{metric.unit}</span>
-              </p>
-              {metric.note ? <p className="mt-1 text-xs text-charcoal/42">{metric.note}</p> : null}
-            </div>
-          ))}
-        </div>
-        <p className="mx-auto mt-4 max-w-7xl px-5 text-[11px] text-charcoal/32 sm:px-6">※一部数値は開発用プレースホルダーです</p>
+        <MetricsStrip metrics={metrics} />
       </section>
 
       {/* ═══ TRUST ═══ */}
@@ -106,7 +77,7 @@ export default function Home() {
           </figure>
           <div className="grid gap-4 md:grid-cols-3">
             {trustPoints.map((point) => (
-              <InfoCard key={point.title} title={point.title} body={point.body} icon={point.icon} />
+              <InfoCard key={point.title} title={point.title} body={point.body} icon={point.icon} showIcon={false} animatedUnderline />
             ))}
           </div>
         </div>
@@ -117,7 +88,8 @@ export default function Home() {
         align="center"
         tone="fog"
         title="買取方法"
-        lead="催事での対面相談を中心に、来場前のLINE査定と電話相談を組み合わせ、不安の少ない入口を用意します。"
+        lead="会場でのご相談に加え、来場前のLINE査定やお電話でも承ります。ご都合に合わせてお選びください。"
+        pattern
       >
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
           <div className="img-zoom relative min-h-80 overflow-hidden rounded-3xl shadow-luxury">
@@ -142,6 +114,7 @@ export default function Home() {
                 body={`${method.lead} ${method.body}`}
                 icon={method.icon}
                 href={method.href}
+                showIcon={false}
               />
             ))}
           </div>
@@ -153,46 +126,33 @@ export default function Home() {
         align="center"
         eyebrow="ITEMS"
         title="買取品目"
-        lead="ブランド品から貴金属、整理品までまとめて相談できます。状態に不安があるものもLINEで確認できます。"
+        lead="ブランド品から貴金属まで、幅広くご相談いただけます。状態が気になるお品物も、まずはLINEでご確認ください。"
       >
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
-          {itemCategories.slice(0, 10).map((item) => (
-            <div key={item.name} className="card-luxury relative overflow-hidden rounded-xl border border-charcoal/8 bg-white p-3 shadow-card sm:p-4">
-              <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-gradient-to-br from-crimson-light/50 to-crimson-light/15 text-crimson shadow-sm">
-                <item.icon aria-hidden size={20} strokeWidth={1.8} />
+          {itemCategories.slice(0, 10).map((item, index) => {
+            const cardImages = [
+              "/images/home-bags-boutique.png",
+              "/images/stock-leather-wallet-cardholder-pouch.png",
+              "/images/items-example-watch-mechanical.png",
+              "/images/items-example-jewelry-still.png",
+              "/images/home-gold-metals.png",
+              "/images/home-category-apparel.png",
+              "/images/home-category-shoes.png",
+              "/images/stock-accessories-belts-sunglasses-hat-scarf.png",
+              "/images/stock-colored-gems-diamonds-on-rock.png",
+              "/images/stock-mixed-luxury-goods-flatlay-wide.png"
+            ];
+            return (
+            <div key={item.name} className="card-luxury relative overflow-hidden rounded-xl border border-charcoal/8 bg-white shadow-card">
+              <div className="relative aspect-[4/3]">
+                <Image src={cardImages[index]} alt="" fill sizes="(min-width: 1024px) 20vw, 50vw" className="object-cover" />
               </div>
-              <h3 className="text-sm font-bold text-charcoal sm:text-base">{item.name}</h3>
-              <p className="mt-1.5 text-xs leading-5 text-charcoal/52 sm:text-sm sm:leading-6">{item.description}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          {[
-            {
-              src: "/images/home-category-apparel.png",
-              label: "アパレル・和装",
-              sub: "着物・帯・ブランド衣類など"
-            },
-            {
-              src: "/images/home-category-shoes.png",
-              label: "靴・シューズ",
-              sub: "革靴・ローファー・スニーカーなど"
-            },
-            {
-              src: "/images/home-category-leather.png",
-              label: "小物・革製品",
-              sub: "財布・カードケース・キーケースなど"
-            }
-          ].map(({ src, label, sub }) => (
-            <div key={label} className="img-zoom group relative aspect-[4/3] overflow-hidden rounded-2xl shadow-card">
-              <Image src={src} alt={label} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-600 ease-luxury group-hover:scale-110" />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-5">
-                <p className="font-bold text-white">{label}</p>
-                <p className="mt-1 text-xs text-white/72">{sub}</p>
+              <div className="p-3 sm:p-4">
+                <h3 className="text-sm font-bold text-charcoal sm:text-base">{item.name}</h3>
+                <p className="mt-1.5 text-xs leading-5 text-charcoal/52 sm:text-sm sm:leading-6">{item.description}</p>
               </div>
             </div>
-          ))}
+          )})}
         </div>
         <div className="mt-8 flex justify-center">
           <ButtonLink href="/items" variant="outline">
@@ -201,74 +161,22 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ═══ BRANDS ═══ */}
-      <Section
-        align="center"
-        tone="fog"
-        eyebrow="BRANDS"
-        title="買取強化ブランド"
-        lead="王道ブランドのバッグを中心に、ジュエリー・時計まで幅広く対応しています。"
-      >
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { name: "ルイ・ヴィトン", src: "/images/brand-louis-vuitton.jpg" },
-            { name: "シャネル", src: "/images/brand-chanel.jpg" },
-            { name: "エルメス", src: "/images/brand-hermes.jpg" },
-            { name: "グッチ", src: "/images/brand-gucci.jpg" },
-            { name: "ディオール", src: "/images/brand-dior.jpg" },
-            { name: "プラダ", src: "/images/brand-prada.jpg" },
-            { name: "セリーヌ", src: "/images/brand-celine.jpg" },
-            { name: "ロエベ", src: "/images/brand-loewe.jpg" }
-          ].map(({ name, src }) => (
-            <Link
-              key={name}
-              href="/brands"
-              className="card-luxury group overflow-hidden rounded-2xl border border-charcoal/8 bg-white shadow-card"
-            >
-              <div className="img-zoom relative aspect-square w-full bg-fog">
-                <Image
-                  src={src}
-                  alt={name}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="object-cover transition-transform duration-600 ease-luxury group-hover:scale-110"
-                />
-              </div>
-              <p className="px-4 py-3 text-center text-sm font-bold text-charcoal">{name}</p>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {brands.filter((b) => !["ルイ・ヴィトン","シャネル","エルメス","グッチ","ディオール","プラダ","セリーヌ","ロエベ"].includes(b)).map((brand) => (
-            <Link
-              key={brand}
-              href="/brands"
-              className="card-luxury rounded-xl border border-charcoal/8 bg-white px-3 py-4 text-center text-sm font-bold text-charcoal transition-colors hover:border-crimson/30 hover:bg-crimson-light/20"
-            >
-              {brand}
-            </Link>
-          ))}
-        </div>
-      </Section>
-
       {/* ═══ FLOW ═══ */}
       <Section
         align="center"
         eyebrow="FLOW"
         title="相談から買取までの流れ"
-        lead="最初の接点はLINEでも電話でも構いません。納得できた場合のみ、次の手続きへ進みます。"
+        lead="まずはLINEかお電話でご相談ください。内容を確認したうえで、必要な流れをご案内します。"
+        pattern
       >
         <div className="grid gap-5 md:grid-cols-4">
           {flowSteps.map((step, index) => (
             <div key={step.title} className="card-luxury relative overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-6 shadow-card">
               <p className="mb-4 font-serif text-4xl font-bold text-crimson/20">0{index + 1}</p>
-              <div className="mb-3 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-crimson-light/50 to-crimson-light/15 text-crimson shadow-sm">
-                <step.icon aria-hidden size={22} strokeWidth={1.8} />
-              </div>
               <h3 className="font-bold text-charcoal">{step.title}</h3>
               <p className="mt-3 text-sm leading-7 text-charcoal/58">{step.body}</p>
               {index < 3 ? (
-                <div className="absolute -right-2 top-1/2 hidden -translate-y-1/2 text-crimson/20 md:block">
+                <div className="absolute -right-5 top-1/2 hidden -translate-y-1/2 text-crimson/35 md:block">
                   <ArrowRight size={24} />
                 </div>
               ) : null}
@@ -278,7 +186,7 @@ export default function Home() {
       </Section>
 
       {/* ═══ PRICES ═══ */}
-      <Section align="center" tone="fog" eyebrow="PRICE" title="買取参考価格">
+      <Section align="center" tone="fog" eyebrow="PRICE" title="買取参考価格" pattern>
         <div className="grid gap-5 md:grid-cols-3">
           {priceReferences.slice(0, 3).map((item) => (
             <div key={item.item} className="card-luxury relative overflow-hidden rounded-2xl border border-charcoal/8 bg-white p-6 shadow-card">
@@ -306,25 +214,14 @@ export default function Home() {
               <Quote aria-hidden size={28} className="mb-2 text-crimson/12" />
               <blockquote className="leading-8 text-charcoal/68">&ldquo;{voice.body}&rdquo;</blockquote>
               <figcaption className="mt-5 flex items-center gap-3 text-sm font-bold text-charcoal">
-                <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-crimson-light/50 to-crimson-light/15 text-xs font-bold text-crimson">
-                  {voice.name.charAt(0)}
+                <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-crimson-light/50 to-crimson-light/15 text-crimson">
+                  <UserRound aria-hidden size={18} strokeWidth={2} />
                 </div>
                 {voice.name}
                 {voice.note ? <span className="font-normal text-charcoal/38">/ {voice.note}</span> : null}
               </figcaption>
             </figure>
           ))}
-        </div>
-        <div className="mt-8 rounded-2xl border border-crimson/10 bg-gradient-to-br from-crimson-light/15 to-crimson-light/5 p-6">
-          <h3 className="font-bold text-charcoal">催事開催実績</h3>
-          <ul className="mt-3 grid gap-2 text-sm text-charcoal/58">
-            {eventHistory.map((event) => (
-              <li key={event} className="flex items-start gap-2.5">
-                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-crimson" />
-                {event}
-              </li>
-            ))}
-          </ul>
         </div>
       </Section>
     </>

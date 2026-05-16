@@ -92,6 +92,7 @@ export default function ItemsPage() {
         tone="fog"
         title="まとめて相談できます"
         lead="遺品整理や生前整理など、点数が多い場合もお気軽にご相談ください。一点ずつお持ち込みいただく必要はありません。"
+        pattern
       >
         <p className="mb-6 max-w-3xl leading-8 text-ink/72">
           ご自宅の整理や相続品の中にブランド品が複数あっても、まとめてLINEや電話でご相談いただけます。ブランド名がわからない品物も、写真を送っていただければ確認のポイントをご案内します。
@@ -125,7 +126,7 @@ export default function ItemsPage() {
         </div>
       </Section>
 
-      <Section tone="fog" title="品物の状態について">
+      <Section tone="fog" title="品物の状態について" pattern>
         <div className="grid gap-4 md:grid-cols-3">
           {[
             {

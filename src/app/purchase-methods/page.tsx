@@ -28,6 +28,7 @@ export default function PurchaseMethodsPage() {
           tone={index % 2 ? "fog" : "white"}
           title={method.title}
           lead={method.lead}
+          pattern={index % 2 === 1}
         >
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
             <VisualFrame

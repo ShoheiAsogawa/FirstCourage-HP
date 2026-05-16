@@ -9,19 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        crimson: "#6D2E3A",
-        "crimson-dark": "#542229",
-        red: "#7A3E47",
+        crimson: "#BF1B1C",
+        "crimson-dark": "#991315",
+        red: "#D94C4C",
         ink: "#111111",
         charcoal: "#1F1F1F",
-        fog: "#FFFBF8",
+        fog: "#FFF9F8",
         linen: "#FFFFFF",
         white: "#FFFFFF",
-        "offwhite": "#F8F5F2",
-        "red-soft": "#F3E8EA",
-        gold: "#6D2E3A",
-        "gold-soft": "#E5D0D4",
-        blush: "#FAF4F5",
+        "offwhite": "#FFF4F3",
+        "red-soft": "#F8E7E7",
+        gold: "#C9A34A",
+        "gold-soft": "#F0DFAE",
+        blush: "#FDF1F1",
         navy: "#17273f"
       },
       boxShadow: {

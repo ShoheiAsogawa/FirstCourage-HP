@@ -23,10 +23,10 @@ export const company = {
   nameEn: "FirstCourage Inc.",
   area: "全国対応（本社：大阪）",
   business: "ブランド品・時計・ジュエリー・貴金属の催事買取、LINE無料査定、買取相談",
-  license: "古物商許可番号：第000000000000号",
+  license: "古物商許可番号：第62111R060984号",
   address: "〒540-0009 大阪府大阪市中央区谷町９丁目２－１２－３０２",
   representative: "代表取締役：山田 太郎",
-  phone: "0120-000-000",
+  phone: "06-7777-3496",
   phoneHours: "10:00-18:00 / 土日祝も相談受付",
   lineUrl: "https://line.me/R/ti/p/@firstcourage-placeholder",
   contactEmail: "info@example.com",
@@ -51,17 +51,17 @@ export const navItems = [
 export const trustPoints = [
   {
     title: "会社情報と許認可を明示",
-    body: "所在地・代表者名・古物商許可番号を掲載し、催事買取でも運営元が確認できる状態にします。",
+    body: "所在地や古物商許可番号をきちんと掲載し、催事での買取でも運営元が分かるようにしています。",
     icon: ShieldCheck
   },
   {
     title: "査定だけでも相談可能",
-    body: "売却を急かさず、まずは写真や電話で状態を確認。初めての方にもわかる言葉で説明します。",
+    body: "売るかどうかを決める前に、まずは写真やお電話でご相談いただけます。初めての方にも分かりやすくご案内します。",
     icon: SearchCheck
   },
   {
     title: "無理な営業をしない",
-    body: "金額や手続きに納得できない場合は見送り可能。しつこい連絡を前提にしない導線にしています。",
+    body: "金額や説明にご納得いただけない場合は、もちろん見送っていただいて構いません。無理なおすすめはいたしません。",
     icon: Handshake
   }
 ] as const;
@@ -69,22 +69,22 @@ export const trustPoints = [
 export const purchaseMethods = [
   {
     title: "催事買取",
-    lead: "お近くの催事会場で、ブランド品や貴金属を対面で相談できます。",
-    body: "実店舗がなくても、会社情報と許認可を明示したうえで全国の催事会場にて対応します。査定内容はその場で説明し、無理な売却をおすすめしません。",
+    lead: "お近くの催事会場で、ブランド品や貴金属を直接ご相談いただけます。",
+    body: "査定内容はその場で分かりやすくご説明します。金額にご納得いただけない場合は、売却を見送っていただいて構いません。",
     icon: Store,
     href: "/purchase-methods#event"
   },
   {
     title: "LINE査定",
-    lead: "写真を送るだけで、売れるかどうか・目安を気軽に相談できます。",
-    body: "バッグ、時計、ジュエリーなどの写真をLINEで送信。来場前に相談できるため、初めての方にも使いやすい導線です。",
+    lead: "写真を送るだけで、売れるかどうかやおおよその目安をご相談いただけます。",
+    body: "バッグや時計、ジュエリーなどの写真をLINEで送るだけ。来場前に確認しておきたい方にも便利です。",
     icon: MessageCircle,
     href: "/purchase-methods#line"
   },
   {
     title: "電話相談",
-    lead: "写真を送るのが苦手な方も、電話で相談できます。",
-    body: "品物の種類や点数、催事会場の確認などをスタッフが案内します。ご家族の整理やまとめ売りの相談にも対応します。",
+    lead: "写真を送るのが難しい方は、お電話でもご相談いただけます。",
+    body: "品物の種類や点数、催事会場についてスタッフがご案内します。ご家族の整理品やまとめてのご相談も承ります。",
     icon: Phone,
     href: "/purchase-methods#phone"
   }
@@ -170,22 +170,22 @@ export const priceReferences = [
 export const flowSteps = [
   {
     title: "写真を送る・電話で相談",
-    body: "LINEで品物の写真を送るか、電話で種類や点数をお知らせください。",
+    body: "LINEで写真を送るか、お電話で品物の種類や点数をお知らせください。",
     icon: Camera
   },
   {
     title: "査定の目安を確認",
-    body: "状態や相場を確認し、わかる範囲で目安と次の手順をお伝えします。",
+    body: "状態や相場を確認し、査定の目安と次の流れをお伝えします。",
     icon: SearchCheck
   },
   {
     title: "催事会場または詳細相談へ",
-    body: "必要に応じて催事会場や持ち物、本人確認書類についてご案内します。",
+    body: "必要に応じて、催事会場や当日の持ち物をご案内します。",
     icon: CalendarDays
   },
   {
     title: "ご納得後にお取引",
-    body: "査定内容を説明し、ご納得いただいた場合のみ買取手続きへ進みます。",
+    body: "査定内容をご説明し、ご納得いただけた場合のみお取引へ進みます。",
     icon: Handshake
   }
 ] as const;
